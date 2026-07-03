@@ -66,22 +66,29 @@ evens = <span class="kw">list</span>(<span class="kw">filter</span>(<span class=
 <span class="kw">print</span>(<span class="str">"Squares LC:"</span>, [x<span class="op">**</span><span class="num">2</span> <span class="kw">for</span> x <span class="kw">in</span> nums])
 <span class="kw">print</span>(<span class="str">"Evens LC:"</span>, [x <span class="kw">for</span> x <span class="kw">in</span> nums <span class="kw">if</span> x <span class="op">%</span> <span class="num">2</span> <span class="op">==</span> <span class="num">0</span>])</pre>
 
-<p><strong>List comprehensions vs map/filter:</strong> In modern Python, list comprehensions are generally preferred because they are more readable and Pythonic:</p>
+<h2>List comprehensions vs map/filter:</h2>
+<p>In modern Python, list comprehensions are generally preferred because they are more readable and Pythonic:</p>
 <p><code>list(map(lambda x: x*2, nums))</code> vs <code>[x*2 for x in nums]</code></p>
 <p><code>list(filter(lambda x: x > 0, nums))</code> vs <code>[x for x in nums if x > 0]</code></p>
 <p>Comprehensions win on readability because the intent (<em>transform each item</em> or <em>select items by condition</em>) is immediately visible. However, map/filter can be more memory-efficient when combined with other lazy operations, and they shine when you already have a named function (avoiding lambda): <code>list(map(str.strip, lines))</code> vs <code>[s.strip() for s in lines]</code>. When using an existing built-in or imported function, <code>map</code> can be cleaner.</p>
 
-<p><strong>Generator expressions vs map/filter:</strong> Generator expressions <code>(x*2 for x in nums)</code> are the lazy equivalent of list comprehensions and compete directly with map/filter. Generator expressions are more readable than map/filter with lambdas and can express both mapping and filtering simultaneously: <code>(x*2 for x in nums if x > 0)</code>. The equivalent with map and filter requires nesting: <code>map(lambda x: x*2, filter(lambda x: x > 0, nums))</code>. Generator expressions win here for readability. Use map/filter over generator expressions when you already have a named function to apply.</p>
+<h2>Generator expressions vs map/filter:</h2>
+<p>Generator expressions <code>(x*2 for x in nums)</code> are the lazy equivalent of list comprehensions and compete directly with map/filter. Generator expressions are more readable than map/filter with lambdas and can express both mapping and filtering simultaneously: <code>(x*2 for x in nums if x > 0)</code>. The equivalent with map and filter requires nesting: <code>map(lambda x: x*2, filter(lambda x: x > 0, nums))</code>. Generator expressions win here for readability. Use map/filter over generator expressions when you already have a named function to apply.</p>
 
-<p><strong>Combining map and filter:</strong> You can chain them to perform both operations. First filter, then map: <code>result = list(map(lambda x: x**2, filter(lambda x: x % 2 == 0, nums)))</code>. This reads "filter even numbers, then square them." The operations are applied lazily — each item passes through filter, and if accepted, through map. For readability, consider breaking this into multiple lines or using a list comprehension with a condition instead.</p>
+<h2>Combining map and filter:</h2>
+<p>You can chain them to perform both operations. First filter, then map: <code>result = list(map(lambda x: x**2, filter(lambda x: x % 2 == 0, nums)))</code>. This reads "filter even numbers, then square them." The operations are applied lazily — each item passes through filter, and if accepted, through map. For readability, consider breaking this into multiple lines or using a list comprehension with a condition instead.</p>
 
-<p><strong>functools.reduce:</strong> For more advanced functional operations, <code>functools.reduce()</code> repeatedly applies a function to accumulate a single result: <code>from functools import reduce; total = reduce(lambda a, b: a + b, nums)</code> sums all numbers (same as <code>sum(nums)</code>). Reduce is powerful for operations like computing factorials, finding products, or building dictionaries from lists. However, Python has specialized functions for common reduce operations: <code>sum()</code>, <code>any()</code>, <code>all()</code>, <code>max()</code>, <code>min()</code>. Only use reduce when no dedicated function exists.</p>
+<h2>functools.reduce:</h2>
+<p>For more advanced functional operations, <code>functools.reduce()</code> repeatedly applies a function to accumulate a single result: <code>from functools import reduce; total = reduce(lambda a, b: a + b, nums)</code> sums all numbers (same as <code>sum(nums)</code>). Reduce is powerful for operations like computing factorials, finding products, or building dictionaries from lists. However, Python has specialized functions for common reduce operations: <code>sum()</code>, <code>any()</code>, <code>all()</code>, <code>max()</code>, <code>min()</code>. Only use reduce when no dedicated function exists.</p>
 
-<p><strong>When to use each:</strong> Use list comprehensions for simple transformations and filters (90% of cases). Use map with existing named functions (no lambda) for clean functional-style code. Use filter when you have a predicate function that already exists. Use generator expressions when dealing with very large datasets to save memory. Use reduce only for operations that genuinely accumulate a single result and have no built-in alternative. Avoid using map/filter with lambdas when a comprehension reads better — which is most of the time.</p>
+<h2>When to use each:</h2>
+<p>Use list comprehensions for simple transformations and filters (90% of cases). Use map with existing named functions (no lambda) for clean functional-style code. Use filter when you have a predicate function that already exists. Use generator expressions when dealing with very large datasets to save memory. Use reduce only for operations that genuinely accumulate a single result and have no built-in alternative. Avoid using map/filter with lambdas when a comprehension reads better — which is most of the time.</p>
 
-<p><strong>Common mistakes:</strong> Forgetting to wrap map/filter with <code>list()</code> to get a list — they return iterators, not lists. Using map with a lambda that has side effects (like <code>print</code>) — a for loop is clearer. Nesting map and filter too deeply — two nested calls are the maximum before readability suffers badly. Using reduce for simple operations that have built-in functions.</p>
+<h2>Common mistakes:</h2>
+<p>Forgetting to wrap map/filter with <code>list()</code> to get a list — they return iterators, not lists. Using map with a lambda that has side effects (like <code>print</code>) — a for loop is clearer. Nesting map and filter too deeply — two nested calls are the maximum before readability suffers badly. Using reduce for simple operations that have built-in functions.</p>
 
-<p><strong>Real-world use case:</strong> Processing log file lines: <code>cleaned = list(map(str.strip, raw_lines)); errors = list(filter(lambda l: "[ERROR]" in l, cleaned))</code>. Or numeric processing: calculating total sales with tax from a list of items: <code>prices_with_tax = list(map(lambda p: p * 1.08, filter(lambda p: p > 0, raw_prices)))</code>.</p>
+<h2>Real-world use case:</h2>
+<p>Processing log file lines: <code>cleaned = list(map(str.strip, raw_lines)); errors = list(filter(lambda l: "[ERROR]" in l, cleaned))</code>. Or numeric processing: calculating total sales with tax from a list of items: <code>prices_with_tax = list(map(lambda p: p * 1.08, filter(lambda p: p > 0, raw_prices)))</code>.</p>
 
 <div class="tip"><strong>Try it:</strong> Chain map and filter to transform a list of numbers: first filter to keep only odds, then map to cube them. Then rewrite the same operation as a list comprehension and compare readability. Finally, use <code>functools.reduce</code> to find the maximum value in a list without using <code>max()</code>.</div>
 
@@ -92,7 +99,7 @@ evens = <span class="kw">list</span>(<span class="kw">filter</span>(<span class=
 
 <div class="nav-links">
 <a href="/lesson-18-working-with-json.html">&larr; Lesson 18: Working with JSON</a>
-<a href="/lesson-20-regular-expressions.html" class="next">Lesson 20: Regular Expressions &rarr;</a>
+<a href="/learn.html" class="next">More Lessons Coming Soon &rarr;</a>
 </div>
 <div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
 &copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>

@@ -53,21 +53,25 @@ li { margin: 4px 0; }
 <div class="meta"><span class="badge">Beginner</span><span>&#9200; 6 min</span></div>
 
 <p>The <code>input()</code> function is Python's built-in way to read user input from the terminal. When called, it pauses program execution, displays an optional prompt string to guide the user, and waits for the user to type something and press Enter. The function then returns whatever was typed as a <strong>string</strong>. This means if you ask for a number and want to do math, you must explicitly convert the result using <code>int()</code> or <code>float()</code>.</p>
-<p><strong>Important note about <code>input()</code>:</strong> Before Python 3, there was a function called <code>raw_input()</code> that worked like modern <code>input()</code>, while <code>input()</code> actually evaluated the input as Python code. This security nightmare was fixed in Python 3 — now <code>input()</code> always returns a string safely. Never use <code>eval(input())</code> — it recreates the old dangerous behavior and can allow malicious code execution.</p>
+<h2>Important note about <code>input()</code>:</h2>
+<p>Before Python 3, there was a function called <code>raw_input()</code> that worked like modern <code>input()</code>, while <code>input()</code> actually evaluated the input as Python code. This security nightmare was fixed in Python 3 — now <code>input()</code> always returns a string safely. Never use <code>eval(input())</code> — it recreates the old dangerous behavior and can allow malicious code execution.</p>
 <p>The <code>print()</code> function outputs text to the console. It is remarkably flexible. You can pass multiple arguments separated by commas, and <code>print()</code> will display them with a space between each: <code>print("The answer is", 42)</code> outputs <code>The answer is 42</code>. The function also accepts two important keyword parameters:</p>
 <ul>
 <li><code>sep</code> — the separator between arguments (default is a space): <code>print(1, 2, 3, sep='-')</code> outputs <code>1-2-3</code></li>
 <li><code>end</code> — what to print at the end (default is a newline <code>\n</code>): <code>print("Loading", end="...")</code> keeps the cursor on the same line</li>
 </ul>
 <p>These parameters are incredibly useful for formatting output. For example, to print items without spaces: <code>print("item1", "item2", "item3", sep="")</code>. To print on the same line: <code>print(".", end="")</code> in a loop creates a progress indicator.</p>
-<p><strong>f-strings</strong> (formatted string literals) are the modern and recommended way to embed expressions inside strings. Prefix the string with <code>f</code> and use curly braces for variables or expressions: <code>print(f"Hello {name.upper()}! You are {age} years old.")</code>. You can put any valid Python expression inside the braces: arithmetic, function calls, even conditionals. F-strings are faster, more readable, and less error-prone than the older approaches:</p>
+<h2>f-strings</h2>
+<p>(formatted string literals) are the modern and recommended way to embed expressions inside strings. Prefix the string with <code>f</code> and use curly braces for variables or expressions: <code>print(f"Hello {name.upper()}! You are {age} years old.")</code>. You can put any valid Python expression inside the braces: arithmetic, function calls, even conditionals. F-strings are faster, more readable, and less error-prone than the older approaches:</p>
 <ul>
 <li><strong>Concatenation:</strong> <code>"Hello " + name + "!"</code> — clunky with multiple variables</li>
 <li><strong><code>%</code> formatting:</strong> <code>"Hello %s!" % name</code> — easy to mismatch types</li>
 <li><strong><code>.format()</code>:</strong> <code>"Hello {}!".format(name)</code> — verbose for complex cases</li>
 </ul>
-<p><strong>Multi-line output:</strong> Use triple quotes to print strings that span multiple lines. Everything between the triple quotes, including newlines, is preserved exactly as written. This is useful for formatted reports, ASCII art, or any structured text output.</p>
-<p><strong>Common mistake:</strong> Forgetting to convert input to a number. If you write <code>age = input("Age: ")</code> then <code>age + 1</code>, Python will raise a <code>TypeError</code> because you cannot add a string and an integer. Always convert numeric input explicitly.</p>
+<h2>Multi-line output:</h2>
+<p>Use triple quotes to print strings that span multiple lines. Everything between the triple quotes, including newlines, is preserved exactly as written. This is useful for formatted reports, ASCII art, or any structured text output.</p>
+<h2>Common mistake:</h2>
+<p>Forgetting to convert input to a number. If you write <code>age = input("Age: ")</code> then <code>age + 1</code>, Python will raise a <code>TypeError</code> because you cannot add a string and an integer. Always convert numeric input explicitly.</p>
 
 <pre><span class="cm"># Taking user input</span>
 name = <span class="kw">input</span>(<span class="str">"What is your name? "</span>)

@@ -68,7 +68,7 @@ json_str = json.<span class="fn">dumps</span>(person, indent=<span class="num">2
 parsed = json.<span class="fn">loads</span>(json_str)
 <span class="kw">print</span>(<span class="str">"Name:"</span>, parsed[<span class="str">"name"</span>])</pre>
 
-<p><strong>Core functions — strings vs files:</strong></p>
+<h2>Core functions — strings vs files:</h2>
 <ul>
 <li><code>json.dumps()</code> — converts a Python object to a JSON <strong>string</strong>. Use <code>indent</code> for pretty-printing: <code>json.dumps(data, indent=2, sort_keys=True)</code>. Control encoding with <code>ensure_ascii=False</code> to preserve non-ASCII characters like emojis. The <code>default</code> parameter specifies a function for objects that aren't natively serializable (like <code>datetime</code> or <code>Decimal</code>).</li>
 <li><code>json.loads()</code> — parses a JSON <strong>string</strong> back into a Python object. Returns a dict for JSON objects, list for JSON arrays, etc.</li>
@@ -76,7 +76,7 @@ parsed = json.<span class="fn">loads</span>(json_str)
 <li><code>json.load(file)</code> — reads directly from a file object: <code>with open("data.json") as f: data = json.load(f)</code>.</li>
 </ul>
 
-<p><strong>JSON to Python type mapping:</strong></p>
+<h2>JSON to Python type mapping:</h2>
 <ul>
 <li>JSON object <code>{}</code> &rarr; Python <code>dict</code></li>
 <li>JSON array <code>[]</code> &rarr; Python <code>list</code></li>
@@ -86,15 +86,20 @@ parsed = json.<span class="fn">loads</span>(json_str)
 <li>JSON null &rarr; Python <code>None</code></li>
 </ul>
 
-<p><strong>Handling nested JSON:</strong> Real-world JSON often has multiple levels of nesting. Access nested data by chaining keys and indices: <code>data["users"][0]["address"]["city"]</code>. For safety, use <code>.get()</code> at each level: <code>data.get("users", [{}])[0].get("address", {}).get("city")</code>. For extremely deep nesting, consider using <code>jsonpath-ng</code> library or flatten the structure with recursive helper functions.</p>
+<h2>Handling nested JSON:</h2>
+<p>Real-world JSON often has multiple levels of nesting. Access nested data by chaining keys and indices: <code>data["users"][0]["address"]["city"]</code>. For safety, use <code>.get()</code> at each level: <code>data.get("users", [{}])[0].get("address", {}).get("city")</code>. For extremely deep nesting, consider using <code>jsonpath-ng</code> library or flatten the structure with recursive helper functions.</p>
 
-<p><strong>Error handling with JSON:</strong> Always wrap JSON parsing in try/except because the input might be malformed: <code>try: data = json.loads(raw_text); except json.JSONDecodeError as e: print(f"Invalid JSON: {e}")</code>. <code>json.JSONDecodeError</code> provides <code>.msg</code>, <code>.doc</code>, <code>.pos</code>, <code>.lineno</code>, and <code>.colno</code> for detailed error reporting. Also handle <code>TypeError</code> when serializing objects that aren't JSON-serializable (like datetime objects — use the <code>default</code> parameter with a custom converter).</p>
+<h2>Error handling with JSON:</h2>
+<p>Always wrap JSON parsing in try/except because the input might be malformed: <code>try: data = json.loads(raw_text); except json.JSONDecodeError as e: print(f"Invalid JSON: {e}")</code>. <code>json.JSONDecodeError</code> provides <code>.msg</code>, <code>.doc</code>, <code>.pos</code>, <code>.lineno</code>, and <code>.colno</code> for detailed error reporting. Also handle <code>TypeError</code> when serializing objects that aren't JSON-serializable (like datetime objects — use the <code>default</code> parameter with a custom converter).</p>
 
-<p><strong>Common mistakes:</strong> Forgetting that JSON uses <code>true</code>/<code>false</code>/<code>null</code> (lowercase) while Python uses <code>True</code>/<code>False</code>/<code>None</code> — the <code>json</code> module handles this conversion automatically. Trying to serialize non-serializable types (datetimes, Decimals, custom objects) — provide a <code>default</code> converter. Using single quotes in JSON strings — JSON requires double quotes. Trailing commas in JSON objects or arrays — JSON does not allow them.</p>
+<h2>Common mistakes:</h2>
+<p>Forgetting that JSON uses <code>true</code>/<code>false</code>/<code>null</code> (lowercase) while Python uses <code>True</code>/<code>False</code>/<code>None</code> — the <code>json</code> module handles this conversion automatically. Trying to serialize non-serializable types (datetimes, Decimals, custom objects) — provide a <code>default</code> converter. Using single quotes in JSON strings — JSON requires double quotes. Trailing commas in JSON objects or arrays — JSON does not allow them.</p>
 
-<p><strong>Best practices:</strong> Always specify <code>indent=2</code> for human-readable output. Use <code>ensure_ascii=False</code> to preserve Unicode characters. Validate JSON before processing by catching <code>JSONDecodeError</code>. For large JSON files, consider streaming parsers like <code>ijson</code>. Use <code>sort_keys=True</code> for consistent, diff-friendly output in version-controlled config files.</p>
+<h2>Best practices:</h2>
+<p>Always specify <code>indent=2</code> for human-readable output. Use <code>ensure_ascii=False</code> to preserve Unicode characters. Validate JSON before processing by catching <code>JSONDecodeError</code>. For large JSON files, consider streaming parsers like <code>ijson</code>. Use <code>sort_keys=True</code> for consistent, diff-friendly output in version-controlled config files.</p>
 
-<p><strong>Real-world use case:</strong> Fetching data from a public API: <code>import urllib.request; response = urllib.request.urlopen("https://api.github.com/users/python"); data = json.loads(response.read()); print(data["login"], data["public_repos"])</code>. Or storing application configuration: read a <code>config.json</code> with <code>json.load()</code> and access settings like database credentials or feature flags.</p>
+<h2>Real-world use case:</h2>
+<p>Fetching data from a public API: <code>import urllib.request; response = urllib.request.urlopen("https://api.github.com/users/python"); data = json.loads(response.read()); print(data["login"], data["public_repos"])</code>. Or storing application configuration: read a <code>config.json</code> with <code>json.load()</code> and access settings like database credentials or feature flags.</p>
 
 <div class="tip"><strong>Try it:</strong> Add <code>ensure_ascii=False</code> to the <code>dumps</code> call and include a Unicode string like "café". Then try serializing a nested structure and use <code>.get()</code> to safely access a deeply nested key. Finally, wrap the <code>loads</code> call in try/except and pass intentionally invalid JSON to see the error message.</div>
 

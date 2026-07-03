@@ -73,15 +73,20 @@ points.<span class="fn">sort</span>(key=<span class="kw">lambda</span> <span cla
 <li><strong>filter():</strong> <code>list(filter(lambda x: len(x) > 5, words))</code> — keep only words longer than 5 characters.</li>
 </ul>
 
-<p><strong>When NOT to use lambda:</strong> If the logic requires statements (if/elif/else chains, loops, try/except, variable assignments), you cannot use lambda — use <code>def</code>. If the function is used in multiple places, define it once with <code>def</code> to avoid repetition. If the lambda expression is too long to read comfortably on one line, use <code>def</code>. As a rule of thumb: if you need more than a single expression or the expression is longer than ~80 characters, write a regular function.</p>
+<h2>When NOT to use lambda:</h2>
+<p>If the logic requires statements (if/elif/else chains, loops, try/except, variable assignments), you cannot use lambda — use <code>def</code>. If the function is used in multiple places, define it once with <code>def</code> to avoid repetition. If the lambda expression is too long to read comfortably on one line, use <code>def</code>. As a rule of thumb: if you need more than a single expression or the expression is longer than ~80 characters, write a regular function.</p>
 
-<p><strong>Lambda vs def comparison:</strong> Both create function objects that can be called the same way. <code>def</code> functions have a name (helpful in tracebacks), support docstrings, annotations, and multiple statements. Lambdas are limited to a single expression and have no name or docstring — if they raise an error, the traceback shows <code>&lt;lambda&gt;</code> which is less helpful for debugging. Performance-wise, they are identical — choice is purely about readability and capability.</p>
+<h2>Lambda vs def comparison:</h2>
+<p>Both create function objects that can be called the same way. <code>def</code> functions have a name (helpful in tracebacks), support docstrings, annotations, and multiple statements. Lambdas are limited to a single expression and have no name or docstring — if they raise an error, the traceback shows <code>&lt;lambda&gt;</code> which is less helpful for debugging. Performance-wise, they are identical — choice is purely about readability and capability.</p>
 
-<p><strong>Common mistakes:</strong> Trying to use statements inside a lambda — <code>lambda x: return x + 1</code> is a <code>SyntaxError</code>. Using a lambda when <code>functools.partial</code> or a regular function would be clearer. Assigning a lambda to a variable (<code>add = lambda x, y: x + y</code>) is poor style — if you're going to name it, use <code>def</code> instead. That's what <code>def</code> is for.</p>
+<h2>Common mistakes:</h2>
+<p>Trying to use statements inside a lambda — <code>lambda x: return x + 1</code> is a <code>SyntaxError</code>. Using a lambda when <code>functools.partial</code> or a regular function would be clearer. Assigning a lambda to a variable (<code>add = lambda x, y: x + y</code>) is poor style — if you're going to name it, use <code>def</code> instead. That's what <code>def</code> is for.</p>
 
-<p><strong>Best practices:</strong> Use lambdas only for simple, single-use operations. Prefer list comprehensions over <code>map()</code> with lambdas for readability. Use <code>key=</code> arguments in <code>sorted()</code>, <code>max()</code>, <code>min()</code> — these are the most common and idiomatic use cases. If the lambda body is complex, refactor it into a named function with a descriptive name.</p>
+<h2>Best practices:</h2>
+<p>Use lambdas only for simple, single-use operations. Prefer list comprehensions over <code>map()</code> with lambdas for readability. Use <code>key=</code> arguments in <code>sorted()</code>, <code>max()</code>, <code>min()</code> — these are the most common and idiomatic use cases. If the lambda body is complex, refactor it into a named function with a descriptive name.</p>
 
-<p><strong>Real-world use case:</strong> Sorting a list of product objects by price descending: <code>products.sort(key=lambda p: p["price"], reverse=True)</code>. Finding the employee with the highest salary: <code>best = max(employees, key=lambda e: e.salary)</code>. Grouping data with <code>itertools.groupby</code>: <code>for city, group in groupby(people, key=lambda p: p["city"]):</code>.</p>
+<h2>Real-world use case:</h2>
+<p>Sorting a list of product objects by price descending: <code>products.sort(key=lambda p: p["price"], reverse=True)</code>. Finding the employee with the highest salary: <code>best = max(employees, key=lambda e: e.salary)</code>. Grouping data with <code>itertools.groupby</code>: <code>for city, group in groupby(people, key=lambda p: p["city"]):</code>.</p>
 
 <div class="tip"><strong>Try it:</strong> Use <code>max()</code> with a lambda to find the longest word in a list: <code>words = ["cat", "elephant", "dog"]; print(max(words, key=lambda w: len(w)))</code>. Then use <code>sorted()</code> with a lambda that sorts by the last character of each word. Finally, compare the readability of a lambda vs a <code>def</code> for a multi-step key function.</div>
 

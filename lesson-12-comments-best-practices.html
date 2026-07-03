@@ -52,14 +52,15 @@ li { margin: 4px 0; }
 <h1>Lesson 12: Comments &amp; Best Practices</h1>
 <div class="meta"><span class="badge">Beginner</span><span>&#9200; 5 min</span></div>
 
-<p><strong>Comments</strong> exist to explain code to human readers — including your future self who will come back to this code six months from now. Writing good comments is a skill that separates professional developers from beginners. In Python, use <code>#</code> for single-line comments and triple-quoted strings (<code>""" """</code>) for multi-line docstrings. A good comment explains <em>why</em> something is done a certain way, not <em>what</em> the code does — the code itself should be clear enough to communicate what it does without comments.</p>
-<p><strong>Types of comments in Python:</strong></p>
+<h2>Comments</h2>
+<p>exist to explain code to human readers — including your future self who will come back to this code six months from now. Writing good comments is a skill that separates professional developers from beginners. In Python, use <code>#</code> for single-line comments and triple-quoted strings (<code>""" """</code>) for multi-line docstrings. A good comment explains <em>why</em> something is done a certain way, not <em>what</em> the code does — the code itself should be clear enough to communicate what it does without comments.</p>
+<h2>Types of comments in Python:</h2>
 <ul>
 <li><strong>Inline comments</strong> (<code>#</code>) — explain a specific line or block. Use sparingly and only when the code is not self-explanatory.</li>
 <li><strong>Docstrings</strong> (<code>""" """</code>) — document functions, classes, and modules. These can be accessed programmatically via <code>help()</code> or <code>__doc__</code>, making them essential for creating usable libraries.</li>
 <li><strong>TODO comments</strong> (<code># TODO: fix this later</code>) — mark unfinished work. Many IDEs highlight these for easy navigation.</li>
 </ul>
-<p><strong>Best practices for writing clean, professional Python:</strong></p>
+<h2>Best practices for writing clean, professional Python:</h2>
 <ul>
 <li><strong>Use meaningful names</strong> — <code>user_age</code> is far better than <code>ua</code> or <code>x</code>. Good names eliminate the need for many comments.</li>
 <li><strong>Follow PEP 8</strong> — Python's official style guide. Key rules: 4-space indentation (not tabs), 2 blank lines around top-level functions, 1 blank line around methods, lowercase_with_underscores for variables and functions, UPPER_CASE for constants.</li>
@@ -69,7 +70,7 @@ li { margin: 4px 0; }
 <li><strong>DRY (Don't Repeat Yourself)</strong> — if you find yourself copy-pasting code, extract it into a function or variable. Repeated code is a breeding ground for bugs when you update one instance but forget to update the others.</li>
 <li><strong>Keep imports at the top</strong> — standard library imports first, then third-party, then your own modules, each group separated by a blank line.</li>
 </ul>
-<p><strong>Common mistakes in commenting:</strong></p>
+<h2>Common mistakes in commenting:</h2>
 <ul>
 <li>Writing obvious comments: <code>x = x + 1  # increment x by 1</code> — the code already says this. Explain why, not what.</li>
 <li>Letting comments rot: When you update code, update the comments too. Outdated comments are worse than no comments — they actively mislead readers.</li>

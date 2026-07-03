@@ -68,9 +68,11 @@ li { margin: 4px 0; }
 
 <p>Python also offers a concise <strong>ternary operator</strong> (also called a conditional expression) for simple if/else assignments in a single line: <code>status = "Adult" if age >= 18 else "Minor"</code>. This is useful for quick conditional assignments but should be avoided for complex logic where readability would suffer.</p>
 
-<p><strong>Common mistake to avoid:</strong> Using a single <code>=</code> (assignment) instead of <code>==</code> (equality comparison) inside a condition. Writing <code>if x = 5</code> will cause a <code>SyntaxError</code>. Always use <code>==</code> to compare values.</p>
+<h2>Common mistake to avoid</h2>
+<p>Using a single <code>=</code> (assignment) instead of <code>==</code> (equality comparison) inside a condition. Writing <code>if x = 5</code> will cause a <code>SyntaxError</code>. Always use <code>==</code> to compare values.</p>
 
-<p><strong>Best practice:</strong> For checking if a value is <code>None</code>, use <code>is None</code> instead of <code>== None</code>. The <code>is</code> operator checks identity, which is the correct way to compare to <code>None</code>.</p>
+<h2>Best practice</h2>
+<p>For checking if a value is <code>None</code>, use <code>is None</code> instead of <code>== None</code>. The <code>is</code> operator checks identity, which is the correct way to compare to <code>None</code>.</p>
 
 <pre><span class="op">age</span> <span class="op">=</span> <span class="num">18</span>
 <span class="kw">if</span> <span class="op">age</span> <span class="op">>=</span> <span class="num">18</span>:

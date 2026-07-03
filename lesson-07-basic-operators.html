@@ -54,7 +54,7 @@ li { margin: 4px 0; }
 
 <p>Python supports a full set of mathematical and logical operators for working with numbers, making it an excellent language for everything from simple arithmetic to complex scientific computing. Python follows the standard order of operations (PEMDAS: Parentheses, Exponents, Multiplication/Division, Addition/Subtraction).</p>
 
-<p><strong>Arithmetic operators:</strong></p>
+<h2>Arithmetic operators</h2>
 
 <ul>
 <li><code>+</code> addition and string concatenation</li>
@@ -66,7 +66,8 @@ li { margin: 4px 0; }
 <li><code>**</code> exponentiation &mdash; raises a number to a power (<code>2 ** 3</code> returns <code>8</code>)</li>
 </ul>
 
-<p><strong>Comparison operators</strong> compare two values and return a boolean result:</p>
+<h2>Comparison operators</h2>
+<p>compare two values and return a boolean result:</p>
 
 <ul>
 <li><code>==</code> &mdash; equal to. Note the double equals &mdash; a single <code>=</code> is for assignment</li>
@@ -77,7 +78,8 @@ li { margin: 4px 0; }
 <li><code>&lt;=</code> &mdash; less than or equal</li>
 </ul>
 
-<p><strong>Logical operators</strong> combine multiple boolean expressions:</p>
+<h2>Logical operators</h2>
+<p>combine multiple boolean expressions:</p>
 
 <ul>
 <li><code>and</code> &mdash; true only if both sides are true</li>
@@ -87,9 +89,11 @@ li { margin: 4px 0; }
 
 <p>Python also supports <strong>augmented assignment operators</strong> that combine an operation with assignment: <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, etc. For example, <code>x += 5</code> is shorthand for <code>x = x + 5</code>. These operators are common in loops and accumulators.</p>
 
-<p><strong>Important detail about <code>//</code>:</strong> Floor division always rounds down to the nearest integer. For positive numbers (<code>10 // 3 = 3</code>) this matches integer division. But for negative numbers, it rounds away from zero: <code>-10 // 3</code> gives <code>-4</code>, not <code>-3</code>. The <code>%</code> operator follows the same sign convention, so <code>-10 % 3</code> gives <code>2</code>. This behavior is mathematically consistent but can surprise newcomers.</p>
+<h2>Important detail about <code>//</code></h2>
+<p>Floor division always rounds down to the nearest integer. For positive numbers (<code>10 // 3 = 3</code>) this matches integer division. But for negative numbers, it rounds away from zero: <code>-10 // 3</code> gives <code>-4</code>, not <code>-3</code>. The <code>%</code> operator follows the same sign convention, so <code>-10 % 3</code> gives <code>2</code>. This behavior is mathematically consistent but can surprise newcomers.</p>
 
-<p><strong>Quick tip:</strong> Use <code>% 2 == 0</code> to check if a number is even, and <code>% 2 == 1</code> for odd. The modulus operator is also useful for constraining values to a range, like wrapping around a circular buffer or creating repeating patterns.</p>
+<h2>Quick tip</h2>
+<p>Use <code>% 2 == 0</code> to check if a number is even, and <code>% 2 == 1</code> for odd. The modulus operator is also useful for constraining values to a range, like wrapping around a circular buffer or creating repeating patterns.</p>
 
 <pre><span class="op">a</span> <span class="op">=</span> <span class="num">10</span>
 <span class="op">b</span> <span class="op">=</span> <span class="num">3</span>
@@ -112,7 +116,7 @@ li { margin: 4px 0; }
 
 <div class="nav-links">
 <a href="/lesson-06-functions.html">&larr; Lesson 06: Functions</a>
-<span></span>
+<a href="/lesson-08-string-methods.html" class="next">Lesson 08: String Methods &rarr;</a>
 </div>
 <div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
 &copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>

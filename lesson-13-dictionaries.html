@@ -53,7 +53,7 @@ li { margin: 4px 0; }
 <div class="meta"><span class="badge">Intermediate</span><span>&#9200; 8 min</span></div>
 
 <p>Dictionaries store data as <strong>key-value pairs</strong>, making them one of Python's most versatile data structures. Each key is unique and maps to a value. Think of a real dictionary — you look up a word (key) and instantly get its definition (value). In code: <code>user = {"name": "Alice", "age": 30}</code>. Keys must be immutable types (strings, numbers, tuples), while values can be any type — lists, other dictionaries, functions, or even <code>None</code>.</p>
-<p><strong>Essential dict methods:</strong></p>
+<h2>Essential dict methods:</h2>
 <ul>
 <li><code>.get(key, default)</code> — safely access a key without raising <code>KeyError</code>. Returns <code>default</code> (or <code>None</code>) if the key is missing: <code>user.get("email", "no email")</code>. This is the idiomatic way to handle optional keys.</li>
 <li><code>.keys()</code> — returns a view of all keys. Useful for iteration or membership checks: <code>"name" in user.keys()</code>.</li>
@@ -63,14 +63,20 @@ li { margin: 4px 0; }
 <li><code>.update(other_dict)</code> — merges another dictionary into this one, overwriting existing keys.</li>
 <li><code>.pop(key, default)</code> — removes a key and returns its value (or default if missing).</li>
 </ul>
-<p><strong>Nested dictionaries</strong> are dictionaries inside dictionaries — a common pattern for representing structured data like JSON API responses:</p>
+<h2>Nested dictionaries</h2>
+<p>are dictionaries inside dictionaries — a common pattern for representing structured data like JSON API responses:</p>
 <p><code>users = {<br>&nbsp;&nbsp;"alice": {"age": 30, "city": "NYC"},<br>&nbsp;&nbsp;"bob": {"age": 25, "city": "London"}<br>}<br>print(users["alice"]["city"])  # NYC</code></p>
 <p>Access nested values safely by chaining <code>.get()</code>: <code>users.get("alice", {}).get("city")</code>. For deeply nested data, consider using <code>collections.defaultdict</code> or the <code>dict</code> approach with <code>setdefault</code>.</p>
-<p><strong>Dict comprehensions</strong> offer a concise way to build dictionaries: <code>squares = {x: x**2 for x in range(5)}</code> produces <code>{0: 0, 1: 1, 2: 4, 3: 9, 4: 16}</code>. Add conditions: <code>{x: x**2 for x in range(10) if x % 2 == 0}</code>. You can also transform keys and values: <code>{k.lower(): v for k, v in data.items()}</code>.</p>
-<p><strong>When to use dict vs list:</strong> Use dictionaries when you need to look up values by a meaningful key (like a name or ID). Use lists when the order of items matters or when you need to store a simple sequence. Dictionaries excel at membership testing (<code>key in dict</code> is O(1) on average) and representing structured records. Lists excel at ordered iteration and sequential access.</p>
-<p><strong>Common mistakes:</strong> Using <code>dict[key]</code> without checking if the key exists (raises <code>KeyError</code>). Always prefer <code>.get()</code> for optional keys. Another mistake is modifying a dictionary while iterating over it — create a copy with <code>.copy()</code> or iterate over <code>list(dict.keys())</code> instead. Also beware that <code>{}</code> creates an empty dict, not an empty set (use <code>set()</code> for that).</p>
-<p><strong>Best practices:</strong> Use descriptive key names (strings or meaningful constants). Prefer <code>.get()</code> over direct indexing for optional keys. Use <code>.items()</code> for iteration to avoid looking up values by key. For counting or grouping, use <code>collections.Counter</code> or <code>defaultdict</code> instead of manual dict logic. Since Python 3.7, dictionaries preserve insertion order — rely on this for predictable iteration.</p>
-<p><strong>Real-world use case:</strong> Dictionaries are the backbone of JSON data processing. When you call a REST API, the response is almost always parsed into nested dictionaries. Configuration files, user profiles, cached data, and database records are all naturally modeled as dictionaries. They are also used internally by Python for namespaces, class attributes, and instance data.</p>
+<h2>Dict comprehensions</h2>
+<p>offer a concise way to build dictionaries: <code>squares = {x: x**2 for x in range(5)}</code> produces <code>{0: 0, 1: 1, 2: 4, 3: 9, 4: 16}</code>. Add conditions: <code>{x: x**2 for x in range(10) if x % 2 == 0}</code>. You can also transform keys and values: <code>{k.lower(): v for k, v in data.items()}</code>.</p>
+<h2>When to use dict vs list:</h2>
+<p>Use dictionaries when you need to look up values by a meaningful key (like a name or ID). Use lists when the order of items matters or when you need to store a simple sequence. Dictionaries excel at membership testing (<code>key in dict</code> is O(1) on average) and representing structured records. Lists excel at ordered iteration and sequential access.</p>
+<h2>Common mistakes:</h2>
+<p>Using <code>dict[key]</code> without checking if the key exists (raises <code>KeyError</code>). Always prefer <code>.get()</code> for optional keys. Another mistake is modifying a dictionary while iterating over it — create a copy with <code>.copy()</code> or iterate over <code>list(dict.keys())</code> instead. Also beware that <code>{}</code> creates an empty dict, not an empty set (use <code>set()</code> for that).</p>
+<h2>Best practices:</h2>
+<p>Use descriptive key names (strings or meaningful constants). Prefer <code>.get()</code> over direct indexing for optional keys. Use <code>.items()</code> for iteration to avoid looking up values by key. For counting or grouping, use <code>collections.Counter</code> or <code>defaultdict</code> instead of manual dict logic. Since Python 3.7, dictionaries preserve insertion order — rely on this for predictable iteration.</p>
+<h2>Real-world use case:</h2>
+<p>Dictionaries are the backbone of JSON data processing. When you call a REST API, the response is almost always parsed into nested dictionaries. Configuration files, user profiles, cached data, and database records are all naturally modeled as dictionaries. They are also used internally by Python for namespaces, class attributes, and instance data.</p>
 
 <pre>user = {
     <span class="str">"name"</span>: <span class="str">"JometCode"</span>,
@@ -91,7 +97,7 @@ user[<span class="str">"version"</span>] = <span class="str">"1.0"</span>
 
 <div class="nav-links">
 <a href="/lesson-12-comments-best-practices.html">&larr; Lesson 12: Comments &amp; Best Practices</a>
-<a href="/lesson-14-list-comprehensions.html" class="next">Lesson 14: List Comprehensions &rarr;</a>
+<a href="/learn.html" class="next">More Lessons Coming Soon &rarr;</a>
 </div>
 <div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
 &copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>

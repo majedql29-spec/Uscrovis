@@ -70,7 +70,8 @@ li { margin: 4px 0; }
 
 <p>The built-in <code>len()</code> function returns the number of characters in a string, including spaces and punctuation. Remember that strings are <strong>immutable</strong> &mdash; methods like <code>.upper()</code> do not modify the original string; they return a new one. You must assign the result back to a variable if you want to keep the change.</p>
 
-<p><strong>Common mistake:</strong> Trying to modify a character directly with <code>text[0] = "H"</code> will raise a <code>TypeError</code>. Strings do not support item assignment. Instead, create a new string using slicing or <code>.replace()</code>.</p>
+<h2>Common mistake</h2>
+<p>Trying to modify a character directly with <code>text[0] = "H"</code> will raise a <code>TypeError</code>. Strings do not support item assignment. Instead, create a new string using slicing or <code>.replace()</code>.</p>
 
 <pre><span class="op">name</span> <span class="op">=</span> <span class="str">"JometCode"</span>
 <span class="op">lang</span> <span class="op">=</span> <span class="str">"Python"</span>

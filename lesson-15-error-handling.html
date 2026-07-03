@@ -66,7 +66,7 @@ li { margin: 4px 0; }
 <span class="kw">finally</span>:
     <span class="kw">print</span>(<span class="str">"Done"</span>)</pre>
 
-<p><strong>The complete try/except/else/finally pattern:</strong></p>
+<h2>The complete try/except/else/finally pattern:</h2>
 <ul>
 <li><strong>try</strong> — wrap code that might raise an exception here. If an error occurs, the rest of the try block is skipped immediately.</li>
 <li><strong>except SomeError</strong> — catches a specific exception type. You can have multiple except blocks for different error types. Use <code>except Exception as e:</code> to capture the exception object and inspect its message (<code>str(e)</code>). A bare <code>except:</code> catches everything, including <code>SystemExit</code> and <code>KeyboardInterrupt</code> — avoid it or use <code>except Exception:</code> instead.</li>
@@ -74,9 +74,11 @@ li { margin: 4px 0; }
 <li><strong>finally</strong> — always runs, whether an exception happened or not. Ideal for cleanup: closing files, releasing locks, closing network connections, restoring state.</li>
 </ul>
 
-<p><strong>Exception hierarchy:</strong> Python exceptions are organized in a class hierarchy. <code>BaseException</code> is the root (don't catch this). <code>Exception</code> is the base for all built-in, non-system exceptions. Common subclasses include <code>ValueError</code> (wrong value), <code>TypeError</code> (wrong type), <code>IndexError</code> (list index out of range), <code>KeyError</code> (missing dict key), <code>FileNotFoundError</code> (missing file), <code>ZeroDivisionError</code> (division by zero), <code>AttributeError</code> (missing attribute), and <code>ImportError</code> (missing module). You can catch a parent type to handle a family of related exceptions: <code>except (ValueError, TypeError):</code>.</p>
+<h2>Exception hierarchy:</h2>
+<p>Python exceptions are organized in a class hierarchy. <code>BaseException</code> is the root (don't catch this). <code>Exception</code> is the base for all built-in, non-system exceptions. Common subclasses include <code>ValueError</code> (wrong value), <code>TypeError</code> (wrong type), <code>IndexError</code> (list index out of range), <code>KeyError</code> (missing dict key), <code>FileNotFoundError</code> (missing file), <code>ZeroDivisionError</code> (division by zero), <code>AttributeError</code> (missing attribute), and <code>ImportError</code> (missing module). You can catch a parent type to handle a family of related exceptions: <code>except (ValueError, TypeError):</code>.</p>
 
-<p><strong>Raising exceptions</strong> — sometimes you need to signal an error yourself: <code>raise ValueError("Invalid input")</code>. You can also re-raise the current exception inside an except block with bare <code>raise</code> (preserving the original traceback). Create <strong>custom exceptions</strong> by inheriting from <code>Exception</code>:</p>
+<h2>Raising exceptions</h2>
+<p>— sometimes you need to signal an error yourself: <code>raise ValueError("Invalid input")</code>. You can also re-raise the current exception inside an except block with bare <code>raise</code> (preserving the original traceback). Create <strong>custom exceptions</strong> by inheriting from <code>Exception</code>:</p>
 
 <pre><span class="kw">class</span> <span class="fn">InsufficientFundsError</span>(<span class="va">Exception</span>):
     <span class="cm">"""Raised when account balance is too low."""</span>
@@ -84,11 +86,14 @@ li { margin: 4px 0; }
 
 <p>Then raise and catch it like any built-in exception. Custom exceptions make your code's error handling more expressive and domain-specific.</p>
 
-<p><strong>Common mistakes:</strong> Catching too broadly (<code>except:</code> or <code>except Exception:</code> when you only expect one type) — this can hide bugs. Not ordering except blocks from most-specific to least-specific (Python checks them in order, so a generic handler before a specific one will catch everything). Using exceptions for normal control flow — they should be for exceptional situations, not regular program logic. Swallowing exceptions silently with <code>except: pass</code> — at minimum log the error.</p>
+<h2>Common mistakes:</h2>
+<p>Catching too broadly (<code>except:</code> or <code>except Exception:</code> when you only expect one type) — this can hide bugs. Not ordering except blocks from most-specific to least-specific (Python checks them in order, so a generic handler before a specific one will catch everything). Using exceptions for normal control flow — they should be for exceptional situations, not regular program logic. Swallowing exceptions silently with <code>except: pass</code> — at minimum log the error.</p>
 
-<p><strong>Best practices:</strong> Catch only exceptions you can actually handle. Let unexpected exceptions propagate to the top level where they can be logged or shown to the user. Be as specific as possible about which exceptions you catch. Use <code>else</code> for success-path code to separate it from error-prone code in the try block. Use <code>finally</code> for cleanup that must happen regardless of success or failure. When raising exceptions, provide informative messages that help with debugging.</p>
+<h2>Best practices:</h2>
+<p>Catch only exceptions you can actually handle. Let unexpected exceptions propagate to the top level where they can be logged or shown to the user. Be as specific as possible about which exceptions you catch. Use <code>else</code> for success-path code to separate it from error-prone code in the try block. Use <code>finally</code> for cleanup that must happen regardless of success or failure. When raising exceptions, provide informative messages that help with debugging.</p>
 
-<p><strong>Real-world use case:</strong> When processing user uploaded files, you might wrap the entire process: <code>try: data = parse_file(path)</code> — catching <code>FileNotFoundError</code> (file missing), <code>PermissionError</code> (no access), <code>json.JSONDecodeError</code> (malformed content), and <code>UnicodeDecodeError</code> (wrong encoding) — each with a different user-friendly error message, plus a <code>finally</code> block to clean up temporary files.</p>
+<h2>Real-world use case:</h2>
+<p>When processing user uploaded files, you might wrap the entire process: <code>try: data = parse_file(path)</code> — catching <code>FileNotFoundError</code> (file missing), <code>PermissionError</code> (no access), <code>json.JSONDecodeError</code> (malformed content), and <code>UnicodeDecodeError</code> (wrong encoding) — each with a different user-friendly error message, plus a <code>finally</code> block to clean up temporary files.</p>
 
 <div class="tip"><strong>Try it:</strong> Add an <code>else</code> block to the code that prints a success confirmation. Add a <code>finally</code> that prints "Operation complete". Then create a custom exception class and raise it conditionally. Finally, try catching multiple exception types with a tuple: <code>except (ValueError, ZeroDivisionError) as e:</code>.</div>
 

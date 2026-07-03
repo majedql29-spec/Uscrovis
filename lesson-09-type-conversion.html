@@ -53,8 +53,10 @@ li { margin: 4px 0; }
 <div class="meta"><span class="badge">Beginner</span><span>&#9200; 6 min</span></div>
 
 <p>Type conversion is the process of changing a value from one data type to another. Python supports both <strong>implicit</strong> (automatic) and <strong>explicit</strong> (manual) conversion. Understanding how and when conversion happens is essential for writing correct and predictable code.</p>
-<p><strong>Implicit conversion</strong> happens automatically when Python knows the conversion is safe and will not lose data. For example, when you add an <code>int</code> and a <code>float</code>, Python automatically converts the <code>int</code> to a <code>float</code> before performing the addition. This is because floats can represent all integer values, but integers cannot represent fractional values — converting in the direction of greater precision avoids data loss. The same applies when dividing integers with <code>/</code>: the result is always a <code>float</code>.</p>
-<p><strong>Explicit conversion</strong> (also called <strong>casting</strong>) is when you manually convert a value using built-in functions. This is necessary when Python cannot infer the correct type or when you need to enforce a specific type:</p>
+<h2>Implicit conversion</h2>
+<p>happens automatically when Python knows the conversion is safe and will not lose data. For example, when you add an <code>int</code> and a <code>float</code>, Python automatically converts the <code>int</code> to a <code>float</code> before performing the addition. This is because floats can represent all integer values, but integers cannot represent fractional values — converting in the direction of greater precision avoids data loss. The same applies when dividing integers with <code>/</code>: the result is always a <code>float</code>.</p>
+<h2>Explicit conversion</h2>
+<p>(also called <strong>casting</strong>) is when you manually convert a value using built-in functions. This is necessary when Python cannot infer the correct type or when you need to enforce a specific type:</p>
 <ul>
 <li><code>int(value)</code> — converts to an integer. Works with floats (truncates the decimal part) and numeric strings. For floats, it truncates toward zero: <code>int(3.9)</code> gives <code>3</code>, <code>int(-2.7)</code> gives <code>-2</code>.</li>
 <li><code>float(value)</code> — converts to a float. Works with integers and numeric strings: <code>float("3.14")</code> gives <code>3.14</code>.</li>
@@ -62,8 +64,10 @@ li { margin: 4px 0; }
 <li><code>bool(value)</code> — converts any value to a boolean. Values that convert to <code>False</code>: <code>0</code>, <code>0.0</code>, <code>""</code> (empty string), <code>[]</code> (empty list), <code>{}</code> (empty dict), <code>None</code>. Everything else is <code>True</code>.</li>
 <li><code>list()</code>, <code>tuple()</code>, <code>set()</code> — convert between collection types: <code>list("hello")</code> gives <code>["h", "e", "l", "l", "o"]</code>.</li>
 </ul>
-<p><strong>Practical example:</strong> When you use <code>input()</code> in Python, the result is always a <strong>string</strong>. If you ask for a number and then try to do math, you must explicitly convert: <code>age = int(input("Enter your age: "))</code>. Forgetting to convert is one of the most common beginner mistakes. Always convert user input to the appropriate type before using it in calculations.</p>
-<p><strong>Common mistake:</strong> Trying to convert a non-numeric string like <code>int("abc")</code> will raise a <code>ValueError</code>. Always validate your data before converting, or wrap the conversion in a try/except block to handle invalid input gracefully.</p>
+<h2>Practical example</h2>
+<p>When you use <code>input()</code> in Python, the result is always a <strong>string</strong>. If you ask for a number and then try to do math, you must explicitly convert: <code>age = int(input("Enter your age: "))</code>. Forgetting to convert is one of the most common beginner mistakes. Always convert user input to the appropriate type before using it in calculations.</p>
+<h2>Common mistake</h2>
+<p>Trying to convert a non-numeric string like <code>int("abc")</code> will raise a <code>ValueError</code>. Always validate your data before converting, or wrap the conversion in a try/except block to handle invalid input gracefully.</p>
 
 <pre><span class="cm"># Implicit conversion</span>
 x = <span class="num">5</span>

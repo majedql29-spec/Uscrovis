@@ -62,7 +62,7 @@ li { margin: 4px 0; }
 
 <p>Once defined, you <strong>call</strong> a function by its name followed by parentheses containing any required arguments: <code>message = greet("JometCode")</code>. The returned value can be stored in a variable, printed, or used in an expression.</p>
 
-<p><strong>Parameter features to know:</strong></p>
+<h2>Parameter features to know</h2>
 
 <ul>
 <li><strong>Default parameters:</strong> You can assign default values: <code>def greet(name, greeting="Hello"):</code> &mdash; if the caller omits <code>greeting</code>, it defaults to <code>"Hello"</code></li>
@@ -70,7 +70,7 @@ li { margin: 4px 0; }
 <li><strong>Variable-length arguments:</strong> Use <code>*args</code> for any number of positional arguments and <code>**kwargs</code> for any number of keyword arguments</li>
 </ul>
 
-<p><strong>Best practices for writing good functions:</strong></p>
+<h2>Best practices for writing good functions</h2>
 
 <ul>
 <li>Give functions descriptive names that explain what they do &mdash; <code>calculate_average()</code> is better than <code>calc()</code></li>
@@ -79,7 +79,8 @@ li { margin: 4px 0; }
 <li>Add a <strong>docstring</strong> (triple-quoted string) right after the definition to document what the function does</li>
 </ul>
 
-<p><strong>Common mistake:</strong> Forgetting to call the function (missing parentheses). Writing <code>greet</code> without parentheses returns the function object itself, not the result. Always use <code>greet("name")</code> with parentheses to actually execute the function.</p>
+<h2>Common mistake</h2>
+<p>Forgetting to call the function (missing parentheses). Writing <code>greet</code> without parentheses returns the function object itself, not the result. Always use <code>greet("name")</code> with parentheses to actually execute the function.</p>
 
 <pre><span class="kw">def</span> <span class="fn">greet</span>(<span class="op">name</span>):
     <span class="kw">return</span> <span class="str">f"Hello, {name}!"</span>
