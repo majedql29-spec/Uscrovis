@@ -65,10 +65,15 @@ def is_code_safe(code):
     return True, ''
 
 class Handler(http.server.SimpleHTTPRequestHandler):
-    ALLOWED_ORIGIN = 'https://jometcode.2bd.net'
+    ALLOWED_ORIGINS = ('https://majedql29-spec.github.io', 'https://jometcode.2bd.net', 'https://jometcode.onrender.com')
+    ALLOWED_ORIGIN = 'https://majedql29-spec.github.io'
 
     def end_headers(self):
-        self.send_header('Access-Control-Allow-Origin', self.ALLOWED_ORIGIN)
+        origin = self.headers.get('Origin', '')
+        if origin in self.ALLOWED_ORIGINS:
+            self.send_header('Access-Control-Allow-Origin', origin)
+        else:
+            self.send_header('Access-Control-Allow-Origin', self.ALLOWED_ORIGIN)
         self.send_header('X-Content-Type-Options', 'nosniff')
         self.send_header('X-Frame-Options', 'DENY')
         self.send_header('Referrer-Policy', 'strict-origin-when-cross-origin')
@@ -139,7 +144,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         host = self.headers.get('Host', '')
         if 'onrender.com' in host:
             self.send_response(301)
-            self.send_header('Location', 'https://jometcode.2bd.net/')
+            self.send_header('Location', 'https://majedql29-spec.github.io/JometCode/')
             self.end_headers()
             return
         if self.path == '/':
