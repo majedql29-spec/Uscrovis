@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="description" content="Python String Methods - learn how to manipulate strings with strip(), lower(), upper(), split(), join(), and more. Free interactive Python tutorial.">
+<meta name="keywords" content="python string methods, strip lower upper python, split join python, string manipulation python">
+<link rel="canonical" href="https://majedql29-spec.github.io/JometCode/lesson-08-string-methods.html">
+<link rel="stylesheet" href="/design.css">
+  <meta property="og:title" content="Python String Methods — Text Manipulation | JometCode">
+<meta property="og:description" content="Learn to manipulate strings with Python's built-in methods: strip, lower, upper, split, join, replace, and more.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://majedql29-spec.github.io/JometCode/lesson-08-string-methods.html">
+<meta property="og:site_name" content="JometCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python String Methods — Text Manipulation | JometCode">
+<meta name="twitter:description" content="Learn Python string methods with our free interactive tutorial.">
+<title>Python String Methods — Free Interactive Python Tutorial | JometCode</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://majedql29-spec.github.io/JometCode"},{"@type":"ListItem","position":2,"name":"Learn Python","item":"https://majedql29-spec.github.io/JometCode/learn.html"},{"@type":"ListItem","position":3,"name":"String Methods","item":"https://majedql29-spec.github.io/JometCode/lesson-08-string-methods.html"}]}</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b10; color: #e8e8ee; line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+h1 { font-size: 26px; margin-bottom: 4px; color: #f97316; font-family: ui-monospace, 'SF Mono', monospace; }
+.meta { color: #5a5a6a; font-size: 13px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #22222e; display: flex; gap: 16px; }
+.meta span { display: flex; align-items: center; gap: 4px; }
+.meta .badge { display: inline-block; background: rgba(249,115,22,0.12); color: #f97316; font-size: 11px; padding: 1px 10px; border-radius: 10px; font-weight: 600; }
+h2 { font-size: 18px; color: #e8e8ee; margin: 24px 0 10px; }
+p { margin: 10px 0; color: #d1d5e0; font-size: 14px; }
+code { background: #16161e; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #f97316; }
+pre { background: #16161e; border: 1px solid #22222e; border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 12px 0; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #d1d5e0; line-height: 1.5; }
+pre .kw { color: #c586c0; } pre .fn { color: #dcdcaa; } pre .str { color: #ce9178; } pre .cm { color: #6a9955; font-style: italic; } pre .num { color: #b5cea8; } pre .op { color: #d4d4d4; }
+ul { margin: 8px 0 8px 20px; color: #d1d5e0; font-size: 14px; }
+li { margin: 4px 0; }
+.tip { background: rgba(249,115,22,0.06); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13px; color: #d1d5e0; }
+.nav-links { display: flex; justify-content: space-between; margin-top: 32px; padding-top: 16px; border-top: 1px solid #22222e; }
+.nav-links a { color: #f97316; text-decoration: none; font-size: 14px; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links .next { text-align: right; }
+.cta { text-align: center; margin: 32px 0; padding: 20px; background: #121216; border: 1px solid #22222e; border-radius: 10px; }
+.cta a { display: inline-block; background: #f97316; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+.cta a:hover { background: #ea580c; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: #5a5a6a; font-size: 13px; text-decoration: none; margin-bottom: 20px; }
+.back-link:hover { color: #f97316; }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e580f92e-6fd0-405b-bce3-f8d667558732"></script>
+</head>
+<body>
+<div class="container">
+<a href="/learn.html" class="back-link">&larr; Back to Course</a>
+<h1>Lesson 08: String Methods</h1>
+<div class="meta"><span class="badge">Beginner</span><span>&#9200; 8 min</span></div>
+
+<p>Python strings come with a rich set of built-in methods that make text manipulation easy, readable, and efficient. Mastering these methods will save you countless lines of code and make your text processing significantly more elegant.</p>
+<h2>Cleaning and trimming methods</h2>
+<p><code>.strip()</code> removes whitespace (spaces, tabs, newlines) from both ends of a string. Use <code>.lstrip()</code> to remove only from the left side and <code>.rstrip()</code> to remove only from the right. These are essential when processing user input or reading data from files, where extra whitespace is common.</p>
+<h2>Case conversion methods</h2>
+<p><code>.lower()</code> converts the entire string to lowercase — extremely useful for case-insensitive comparisons. <code>.upper()</code> converts to uppercase. <code>.title()</code> capitalizes the first letter of every word. <code>.capitalize()</code> capitalizes only the very first character and lowercases everything else. And <code>.swapcase()</code> swaps uppercase to lowercase and vice versa.</p>
+<h2>Splitting and joining — two of the most useful string operations</h2>
+<ul>
+<li><code>.split()</code> breaks a string into a list of substrings. By default, it splits on any whitespace and discards empty strings. You can specify a separator: <code>"a,b,c".split(",")</code> returns <code>["a", "b", "c"]</code>. There is also <code>.rsplit()</code> which splits from the right.</li>
+<li><code>.join()</code> is the inverse — it takes a list of strings and joins them into a single string with the separator. This is called on the separator string: <code>", ".join(["apple", "banana", "cherry"])</code> produces <code>"apple, banana, cherry"</code>. Notice that <code>.join()</code> is called on the separator, not on the list — this is a common point of confusion for beginners.</li>
+</ul>
+<h2>Searching and validation methods</h2>
+<p><code>.find(substring)</code> returns the index of the first occurrence of a substring, or <code>-1</code> if not found. <code>.index()</code> is similar but raises a <code>ValueError</code> if not found. <code>.startswith(prefix)</code> and <code>.endswith(suffix)</code> return booleans and are very useful for conditional checks. <code>.count(substring)</code> returns the number of non-overlapping occurrences.</p>
+<h2>Replacing and translating</h2>
+<p><code>.replace(old, new)</code> replaces all occurrences of a substring with another. You can also pass an optional third argument to limit the number of replacements: <code>.replace("a", "o", 2)</code> replaces only the first two occurrences.</p>
+<p>It is critical to remember that strings are <strong>immutable</strong>. None of these methods modify the original string — they all return a brand new string. If you want to keep the result, you must assign it to a variable: <code>cleaned = text.strip().lower()</code>.</p>
+<h2>Method chaining</h2>
+<p>Because each method returns a new string, you can chain them together: <code>"  Hello World  ".strip().upper().replace("WORLD", "Python")</code> produces <code>"HELLO PYTHON"</code>. This is a powerful technique that lets you perform multiple transformations in a single line.</p>
+<h2>Common mistake</h2>
+<p>Forgetting that strings are immutable. Writing <code>text.strip()</code> without assigning the result does nothing visible — the original string remains unchanged. Always capture the return value.</p>
+
+<pre>text = <span class="str">"  hello, PYTHON world!  "</span>
+<span class="kw">print</span>(<span class="str">"strip:"</span>, text.strip())
+<span class="kw">print</span>(<span class="str">"lower:"</span>, text.lower())
+<span class="kw">print</span>(<span class="str">"upper:"</span>, text.upper())
+<span class="kw">print</span>(<span class="str">"title:"</span>, text.title())
+<span class="kw">print</span>(<span class="str">"replace:"</span>, text.replace(<span class="str">"world"</span>, <span class="str">"JometCode"</span>))
+words = text.strip().split(<span class="str">" "</span>)
+<span class="kw">print</span>(<span class="str">"words:"</span>, words)
+<span class="kw">print</span>(<span class="str">"joined:"</span>, <span class="str">"-"</span>.join(words))</pre>
+
+<div class="tip"><strong>Try it:</strong> Add <code>text.startswith("hello")</code> and <code>text.find("world")</code> to the code. Then try chaining three or more methods together and observe the result.</div>
+
+<div class="cta">
+<a href="/learn.html#lesson-0">Open Interactive Lesson &rarr;</a>
+<p>Run this code directly in your browser with our free Python IDE.</p>
+</div>
+
+<div class="nav-links">
+<a href="/lesson-07-basic-operators.html">&larr; Lesson 07: Basic Operators</a>
+<a href="/lesson-09-type-conversion.html" class="next">Lesson 09: Type Conversion &rarr;</a>
+</div>
+<div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
+&copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>
+</div>
+</div>
+</body>
+</html>

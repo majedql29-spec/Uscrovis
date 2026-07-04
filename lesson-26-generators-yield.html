@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="description" content="Python Generators and Yield - learn to write memory-efficient iterators with yield. Master generator functions, generator expressions, yield from, and send().">
+<meta name="keywords" content="python generators, yield python, generator expressions, yield from, lazy evaluation, python iterators">
+<link rel="canonical" href="https://majedql29-spec.github.io/JometCode/lesson-26-generators-yield.html">
+<link rel="stylesheet" href="/design.css">
+  <meta property="og:title" content="Python Generators & Yield — Lazy Iteration | JometCode">
+<meta property="og:description" content="Master Python generators and yield: write memory-efficient iterators, use generator expressions, yield from, send(), and build data processing pipelines.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://majedql29-spec.github.io/JometCode/lesson-26-generators-yield.html">
+<meta property="og:site_name" content="JometCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Generators & Yield — Lazy Iteration | JometCode">
+<meta name="twitter:description" content="Master Python generators and yield.">
+<title>Python Generators & Yield — Free Interactive Tutorial | JometCode</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://majedql29-spec.github.io/JometCode"},{"@type":"ListItem","position":2,"name":"Learn Python","item":"https://majedql29-spec.github.io/JometCode/learn.html"},{"@type":"ListItem","position":3,"name":"Generators & Yield","item":"https://majedql29-spec.github.io/JometCode/lesson-26-generators-yield.html"}]}</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b10; color: #e8e8ee; line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+h1 { font-size: 26px; margin-bottom: 4px; color: #f97316; font-family: ui-monospace, 'SF Mono', monospace; }
+.meta { color: #5a5a6a; font-size: 13px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #22222e; display: flex; gap: 16px; }
+.meta span { display: flex; align-items: center; gap: 4px; }
+.meta .badge { display: inline-block; background: rgba(249,115,22,0.12); color: #f97316; font-size: 11px; padding: 1px 10px; border-radius: 10px; font-weight: 600; }
+h2 { font-size: 18px; color: #e8e8ee; margin: 24px 0 10px; }
+p { margin: 10px 0; color: #d1d5e0; font-size: 14px; }
+code { background: #16161e; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #f97316; }
+pre { background: #16161e; border: 1px solid #22222e; border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 12px 0; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #d1d5e0; line-height: 1.5; }
+pre .kw { color: #c586c0; } pre .fn { color: #dcdcaa; } pre .str { color: #ce9178; } pre .cm { color: #6a9955; font-style: italic; } pre .num { color: #b5cea8; } pre .op { color: #d4d4d4; } pre .va { color: #9cdcfe; }
+ul { margin: 8px 0 8px 20px; color: #d1d5e0; font-size: 14px; }
+li { margin: 4px 0; }
+.tip { background: rgba(249,115,22,0.06); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13px; color: #d1d5e0; }
+.nav-links { display: flex; justify-content: space-between; margin-top: 32px; padding-top: 16px; border-top: 1px solid #22222e; }
+.nav-links a { color: #f97316; text-decoration: none; font-size: 14px; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links .next { text-align: right; }
+.cta { text-align: center; margin: 32px 0; padding: 20px; background: #121216; border: 1px solid #22222e; border-radius: 10px; }
+.cta a { display: inline-block; background: #f97316; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+.cta a:hover { background: #ea580c; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: #5a5a6a; font-size: 13px; text-decoration: none; margin-bottom: 20px; }
+.back-link:hover { color: #f97316; }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e580f92e-6fd0-405b-bce3-f8d667558732"></script>
+</head>
+<body>
+<div class="container">
+<a href="/learn.html" class="back-link">&larr; Back to Course</a>
+<h1>Lesson 26: Generators &amp; Yield</h1>
+<div class="meta"><span class="badge">Advanced</span><span>&#9200; 9 min</span></div>
+
+<p><strong>Generators</strong> produce sequences of values lazily — they yield one value at a time instead of computing and storing all values at once. This makes them exceptionally memory-efficient, especially for large or infinite datasets. A generator function uses <code>yield</code> instead of <code>return</code>. When called, it returns a generator object without executing the function body. Each time you request the next value via <code>next()</code> or a for loop, the function runs until it hits <code>yield</code>, produces the value, and pauses — preserving its entire state for the next call.</p>
+
+<pre><span class="kw">def</span> <span class="fn">count_up_to</span>(<span class="va">n</span>):
+    <span class="va">i</span> = <span class="num">1</span>
+    <span class="kw">while</span> <span class="va">i</span> <span class="op"><=</span> n:
+        <span class="kw">yield</span> i
+        <span class="va">i</span> += <span class="num">1</span>
+
+<span class="kw">for</span> <span class="va">num</span> <span class="kw">in</span> <span class="fn">count_up_to</span>(<span class="num">5</span>):
+    <span class="kw">print</span>(num)
+
+<span class="cm"># Generator expression</span>
+<span class="va">squares</span> = (<span class="va">x</span><span class="op">**</span><span class="num">2</span> <span class="kw">for</span> <span class="va">x</span> <span class="kw">in</span> <span class="kw">range</span>(<span class="num">5</span>))
+<span class="kw">print</span>(<span class="kw">list</span>(squares))</pre>
+
+<h2>Generator expressions vs list comprehensions</h2>
+<p>Both have the same syntax except for brackets. A list comprehension <code>[x**2 for x in range(10_000_000)]</code> would allocate a 10-million-element list, consuming hundreds of megabytes of memory. A generator expression <code>(x**2 for x in range(10_000_000))</code> uses almost no memory — it computes each value on demand. Use generator expressions when you only need to iterate once and the dataset is large. Use list comprehensions when you need random access, need to iterate multiple times, or the dataset is small enough to fit in memory comfortably.</p>
+
+<h2>yield from — delegating to sub-generators</h2>
+<p>Python 3.3+ introduced <code>yield from</code> for yielding all values from another iterable or generator. It simplifies chaining or flattening generators:</p>
+<pre><span class="kw">def</span> <span class="fn">chain</span>(<span class="op">*</span>iterables):
+    <span class="kw">for</span> <span class="va">it</span> <span class="kw">in</span> iterables:
+        <span class="kw">yield from</span> it  <span class="cm"># equivalent to: for item in it: yield item</span></pre>
+
+<h2>send(), throw(), and close() — bidirectional generators</h2>
+<p>Generators can receive values via <code>.send(value)</code>, which becomes the return value of <code>yield</code> inside the generator:</p>
+<pre><span class="kw">def</span> <span class="fn">echo</span>():
+    <span class="kw">while</span> <span class="kw">True</span>:
+        <span class="va">received</span> = <span class="kw">yield</span>
+        <span class="kw">print</span>(<span class="str">f"Got: </span>{<span class="va">received</span>}<span class="str">"</span>)
+
+<span class="va">g</span> = <span class="fn">echo</span>()
+<span class="kw">next</span>(g)  <span class="cm"># Prime the generator (advance to first yield)</span>
+<span class="va">g</span>.<span class="fn">send</span>(<span class="str">"Hello"</span>)  <span class="cm"># Prints "Got: Hello"</span></pre>
+<p><code>.throw(exception_type)</code> raises an exception at the yield point inside the generator. <code>.close()</code> sends a <code>GeneratorExit</code> exception, causing the generator to exit.</p>
+
+<h2>Practical use cases for generators</h2>
+<p>Processing large files line-by-line without loading the entire file into memory. Generating infinite sequences like Fibonacci numbers. Implementing data processing pipelines where each stage is a generator that reads from the previous stage. Streaming API responses. Implementing custom iterators for complex traversal patterns (tree traversal, graph search).</p>
+
+<h2>Common mistakes</h2>
+<p>Forgetting to prime a generator with <code>next()</code> before <code>.send()</code> — raises <code>TypeError</code>. Using <code>return value</code> in a generator — in Python 3, <code>return value</code> provides the value in a <code>StopIteration</code> exception. Creating a generator but never consuming it — it does nothing until iterated. Using a list comprehension when a generator expression would be more memory-efficient for large datasets.</p>
+
+<h2>Best practices</h2>
+<p>Use generator expressions for one-time iteration over large datasets. Use generator functions for complex sequences that require state or logic. Use <code>yield from</code> for delegating to sub-generators. Remember that generators are single-use — once exhausted, they cannot be restarted. For expensive-to-create generators, consider using <code>itertools.tee()</code> if you need multiple independent iterators.</p>
+
+<h2>Real-world use case</h2>
+<p>A log processing pipeline: <code>def read_logs(path): yield from open(path); def filter_errors(lines): for line in lines: if "ERROR" in line: yield line; def extract_fields(lines): for line in lines: yield parse_log_line(line)</code>. Each stage is a generator that lazily processes data from the previous stage, allowing processing of gigabyte-sized log files with constant memory usage.</p>
+
+<div class="tip"><strong>Try it:</strong> Write a generator that yields the first N Fibonacci numbers. Then use <code>yield from</code> to concatenate two sequences. Finally, use <code>.send()</code> to create a generator that accumulates values: <code>def accumulator(): total = 0; while True: total += yield total</code> and send it numbers to see running totals.</div>
+
+<div class="cta">
+<a href="/learn.html#lesson-0">Open Interactive Lesson &rarr;</a>
+<p>Run this code directly in your browser with our free Python IDE.</p>
+</div>
+
+<div class="nav-links">
+<a href="/lesson-25-decorators.html">&larr; Lesson 25: Decorators</a>
+<a href="/learn.html" class="next">More Lessons Coming Soon &rarr;</a>
+</div>
+<div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
+&copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="description" content="Python Classes and OOP - learn object-oriented programming with Python. Master __init__, self, inheritance, @property, classmethod, and dunder methods.">
+<meta name="keywords" content="python classes, oop python, object oriented programming, __init__, self, inheritance, python class">
+<link rel="canonical" href="https://majedql29-spec.github.io/JometCode/lesson-23-classes-oop.html">
+<link rel="stylesheet" href="/design.css">
+  <meta property="og:title" content="Python Classes & OOP — Object-Oriented Programming | JometCode">
+<meta property="og:description" content="Master object-oriented programming in Python. Learn classes, inheritance, @property, @classmethod, staticmethod, and dunder methods with examples.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://majedql29-spec.github.io/JometCode/lesson-23-classes-oop.html">
+<meta property="og:site_name" content="JometCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Classes & OOP — Object-Oriented Programming | JometCode">
+<meta name="twitter:description" content="Master object-oriented programming in Python.">
+<title>Python Classes & OOP — Free Interactive Tutorial | JometCode</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://majedql29-spec.github.io/JometCode"},{"@type":"ListItem","position":2,"name":"Learn Python","item":"https://majedql29-spec.github.io/JometCode/learn.html"},{"@type":"ListItem","position":3,"name":"Classes & OOP","item":"https://majedql29-spec.github.io/JometCode/lesson-23-classes-oop.html"}]}</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b10; color: #e8e8ee; line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+h1 { font-size: 26px; margin-bottom: 4px; color: #f97316; font-family: ui-monospace, 'SF Mono', monospace; }
+.meta { color: #5a5a6a; font-size: 13px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #22222e; display: flex; gap: 16px; }
+.meta span { display: flex; align-items: center; gap: 4px; }
+.meta .badge { display: inline-block; background: rgba(249,115,22,0.12); color: #f97316; font-size: 11px; padding: 1px 10px; border-radius: 10px; font-weight: 600; }
+h2 { font-size: 18px; color: #e8e8ee; margin: 24px 0 10px; }
+p { margin: 10px 0; color: #d1d5e0; font-size: 14px; }
+code { background: #16161e; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #f97316; }
+pre { background: #16161e; border: 1px solid #22222e; border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 12px 0; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #d1d5e0; line-height: 1.5; }
+pre .kw { color: #c586c0; } pre .fn { color: #dcdcaa; } pre .str { color: #ce9178; } pre .cm { color: #6a9955; font-style: italic; } pre .num { color: #b5cea8; } pre .op { color: #d4d4d4; } pre .va { color: #9cdcfe; }
+ul { margin: 8px 0 8px 20px; color: #d1d5e0; font-size: 14px; }
+li { margin: 4px 0; }
+.tip { background: rgba(249,115,22,0.06); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13px; color: #d1d5e0; }
+.nav-links { display: flex; justify-content: space-between; margin-top: 32px; padding-top: 16px; border-top: 1px solid #22222e; }
+.nav-links a { color: #f97316; text-decoration: none; font-size: 14px; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links .next { text-align: right; }
+.cta { text-align: center; margin: 32px 0; padding: 20px; background: #121216; border: 1px solid #22222e; border-radius: 10px; }
+.cta a { display: inline-block; background: #f97316; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+.cta a:hover { background: #ea580c; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: #5a5a6a; font-size: 13px; text-decoration: none; margin-bottom: 20px; }
+.back-link:hover { color: #f97316; }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e580f92e-6fd0-405b-bce3-f8d667558732"></script>
+</head>
+<body>
+<div class="container">
+<a href="/learn.html" class="back-link">&larr; Back to Course</a>
+<h1>Lesson 23: Classes &amp; OOP</h1>
+<div class="meta"><span class="badge">Advanced</span><span>&#9200; 12 min</span></div>
+
+<p><strong>Object-Oriented Programming (OOP)</strong> organizes code into <strong>classes</strong> (blueprints) and <strong>objects</strong> (instances). Instead of writing functions that operate on separate data structures, you bundle data and behavior together. A <code>Dog</code> class defines what all dogs have in common; <code>my_dog = Dog("Rex")</code> creates a specific dog object. Python supports full OOP with a clean, intuitive syntax.</p>
+
+<h2>The __init__ method and self</h2>
+<p>The <code>__init__</code> constructor runs automatically when you create an object. The <code>self</code> parameter refers to the current instance and is used to access attributes and methods. It is automatic — Python passes it for you when calling methods: <code>my_dog.bark()</code> becomes <code>Dog.bark(my_dog)</code> internally.</p>
+
+<pre><span class="kw">class</span> <span class="fn">Dog</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="va">self</span>, <span class="va">name</span>):
+        <span class="va">self</span>.<span class="va">name</span> = name
+    <span class="kw">def</span> <span class="fn">bark</span>(<span class="va">self</span>):
+        <span class="kw">return</span> <span class="str">f"</span>{<span class="va">self</span>.<span class="va">name</span>}<span class="str"> says woof!"</span>
+
+<span class="va">my_dog</span> = <span class="fn">Dog</span>(<span class="str">"Rex"</span>)
+<span class="kw">print</span>(<span class="va">my_dog</span>.<span class="fn">bark</span>())</pre>
+
+<h2>Inheritance and super()</h2>
+<p>Inheritance lets you create specialized classes from general ones. A subclass inherits all methods and attributes from its parent class and can override or extend them. Use <code>super()</code> to call the parent class's methods:</p>
+<pre><span class="kw">class</span> <span class="fn">Animal</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="va">self</span>, <span class="va">name</span>):
+        <span class="va">self</span>.<span class="va">name</span> = name
+    <span class="kw">def</span> <span class="fn">speak</span>(<span class="va">self</span>):
+        <span class="kw">raise</span> <span class="kw">NotImplementedError</span>
+
+<span class="kw">class</span> <span class="fn">Dog</span>(<span class="va">Animal</span>):
+    <span class="kw">def</span> <span class="fn">speak</span>(<span class="va">self</span>):
+        <span class="kw">return</span> <span class="str">f"</span>{<span class="va">self</span>.<span class="va">name</span>}<span class="str"> says Woof!"</span>
+
+<span class="kw">class</span> <span class="fn">Cat</span>(<span class="va">Animal</span>):
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="va">self</span>, <span class="va">name</span>, <span class="va">toy</span>):
+        <span class="kw">super</span>().<span class="fn">__init__</span>(name)  <span class="cm"># Call parent constructor</span>
+        <span class="va">self</span>.<span class="va">toy</span> = toy</pre>
+
+<h2>@classmethod vs @staticmethod</h2>
+<p>Both are decorators for methods that don't operate on instances. <code>@classmethod</code> receives the class (<code>cls</code>) as the first argument and can access class-level attributes. <code>@staticmethod</code> receives neither <code>self</code> nor <code>cls</code> — it's just a regular function placed inside a class for logical grouping.</p>
+
+<h2>The @property decorator</h2>
+<p>Allows you to define methods that can be accessed like attributes, with optional computed values and validation:</p>
+<pre><span class="kw">class</span> <span class="fn">Circle</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="va">self</span>, <span class="va">radius</span>):
+        <span class="va">self</span>.<span class="va">_radius</span> = radius
+    <span class="va">@property</span>
+    <span class="kw">def</span> <span class="fn">area</span>(<span class="va">self</span>):
+        <span class="kw">return</span> <span class="num">3.14</span> * <span class="va">self</span>.<span class="va">_radius</span> <span class="op">**</span> <span class="num">2</span>
+    <span class="va">@property</span>
+    <span class="kw">def</span> <span class="fn">radius</span>(<span class="va">self</span>):
+        <span class="kw">return</span> <span class="va">self</span>.<span class="va">_radius</span>
+    <span class="va">@radius.setter</span>
+    <span class="kw">def</span> <span class="fn">radius</span>(<span class="va">self</span>, <span class="va">value</span>):
+        <span class="kw">if</span> value <span class="op"><</span> <span class="num">0</span>:
+            <span class="kw">raise</span> <span class="kw">ValueError</span>(<span class="str">"Radius cannot be negative"</span>)
+        <span class="va">self</span>.<span class="va">_radius</span> = value</pre>
+
+<h2>Dunder methods (special methods)</h2>
+<p>Double-underscore methods let your objects interoperate with Python's built-in operations. Key ones include: <code>__str__</code> (called by <code>print()</code>), <code>__repr__</code> (developer-friendly representation), <code>__len__</code> (called by <code>len()</code>), <code>__eq__</code> (<code>==</code>), <code>__lt__</code> (<code>&lt;</code>), <code>__getitem__</code> (<code>obj[key]</code>), <code>__add__</code> (<code>+</code>), <code>__bool__</code> (truthiness). Implementing these makes your classes feel like built-in types.</p>
+
+<h2>Encapsulation and name mangling</h2>
+<p>Python uses conventions rather than strict access control. A single underscore prefix (<code>_hidden</code>) means "internal use" (convention, not enforced). Double underscore prefix (<code>__private</code>) triggers name mangling to <code>_ClassName__private</code>, making accidental access harder.</p>
+
+<h2>Common mistakes</h2>
+<p>Forgetting <code>self</code> as the first parameter of instance methods — causes <code>TypeError</code>. Using <code>@staticmethod</code> when <code>@classmethod</code> is needed (or vice versa). Not calling <code>super().__init__()</code> in subclasses, leaving parent attributes uninitialized.</p>
+
+<h2>Best practices</h2>
+<p>Use properties instead of getter/setter methods — they're more Pythonic. Favor composition over inheritance ("has-a" is often better than "is-a"). Keep classes focused on a single responsibility. Use <code>__repr__</code> to provide useful debugging information. Use <code>__slots__</code> to save memory when creating many instances of a class.</p>
+
+<h2>Real-world use case</h2>
+<p>Modeling a banking system: <code>Account</code> base class with <code>CheckingAccount</code> and <code>SavingsAccount</code> subclasses. The base class handles common logic (balance, owner, account number), while subclasses implement specific rules (withdrawal fees, interest rates). <code>@property</code> provides computed balance, <code>@classmethod</code> creates accounts from CSV data, and dunder methods enable sorting by balance or comparing accounts.</p>
+
+<div class="tip"><strong>Try it:</strong> Add a <code>__str__</code> method to the Dog class that returns a friendly description. Then create a subclass <code>Puppy(Dog)</code> with a modified <code>bark()</code> that includes a cute suffix. Add a <code>@property</code> that returns the dog's age in human years. Finally, try <code>super()</code> to extend the parent's <code>__init__</code>.</div>
+
+<div class="cta">
+<a href="/learn.html#lesson-0">Open Interactive Lesson &rarr;</a>
+<p>Run this code directly in your browser with our free Python IDE.</p>
+</div>
+
+<div class="nav-links">
+<a href="/lesson-22-csv-file-handling.html">&larr; Lesson 22: CSV File Handling</a>
+<a href="/lesson-24-modules-imports.html" class="next">Lesson 24: Modules &amp; Imports &rarr;</a>
+</div>
+<div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
+&copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>
+</div>
+</div>
+</body>
+</html>

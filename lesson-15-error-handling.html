@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="description" content="Python Error Handling — learn try, except, else, finally blocks. Handle exceptions gracefully with Python's error handling mechanisms. Free interactive tutorial.">
+<meta name="keywords" content="python error handling, try except python, exception handling python, python try except finally, python raise exception">
+<link rel="canonical" href="https://majedql29-spec.github.io/JometCode/lesson-15-error-handling.html">
+<link rel="stylesheet" href="/design.css">
+  <meta property="og:title" content="Python Error Handling — Try, Except, Finally | JometCode">
+<meta property="og:description" content="Learn Python error handling with try/except/else/finally. Handle exceptions gracefully and write robust Python code.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://majedql29-spec.github.io/JometCode/lesson-15-error-handling.html">
+<meta property="og:site_name" content="JometCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Error Handling — Try, Except, Finally | JometCode">
+<meta name="twitter:description" content="Learn Python error handling with try/except/else/finally. Handle exceptions gracefully.">
+<title>Python Error Handling — Free Interactive Python Tutorial | JometCode</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://majedql29-spec.github.io/JometCode"},{"@type":"ListItem","position":2,"name":"Learn Python","item":"https://majedql29-spec.github.io/JometCode/learn.html"},{"@type":"ListItem","position":3,"name":"Error Handling","item":"https://majedql29-spec.github.io/JometCode/lesson-15-error-handling.html"}]}</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b10; color: #e8e8ee; line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+h1 { font-size: 26px; margin-bottom: 4px; color: #f97316; font-family: ui-monospace, 'SF Mono', monospace; }
+.meta { color: #5a5a6a; font-size: 13px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #22222e; display: flex; gap: 16px; }
+.meta span { display: flex; align-items: center; gap: 4px; }
+.meta .badge { display: inline-block; background: rgba(249,115,22,0.12); color: #f97316; font-size: 11px; padding: 1px 10px; border-radius: 10px; font-weight: 600; }
+h2 { font-size: 18px; color: #e8e8ee; margin: 24px 0 10px; }
+p { margin: 10px 0; color: #d1d5e0; font-size: 14px; }
+code { background: #16161e; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #f97316; }
+pre { background: #16161e; border: 1px solid #22222e; border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 12px 0; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #d1d5e0; line-height: 1.5; }
+pre .kw { color: #c586c0; } pre .fn { color: #dcdcaa; } pre .str { color: #ce9178; } pre .cm { color: #6a9955; font-style: italic; } pre .num { color: #b5cea8; } pre .op { color: #d4d4d4; } pre .va { color: #9cdcfe; }
+ul { margin: 8px 0 8px 20px; color: #d1d5e0; font-size: 14px; }
+li { margin: 4px 0; }
+.tip { background: rgba(249,115,22,0.06); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13px; color: #d1d5e0; }
+.nav-links { display: flex; justify-content: space-between; margin-top: 32px; padding-top: 16px; border-top: 1px solid #22222e; }
+.nav-links a { color: #f97316; text-decoration: none; font-size: 14px; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links .next { text-align: right; }
+.cta { text-align: center; margin: 32px 0; padding: 20px; background: #121216; border: 1px solid #22222e; border-radius: 10px; }
+.cta a { display: inline-block; background: #f97316; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+.cta a:hover { background: #ea580c; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: #5a5a6a; font-size: 13px; text-decoration: none; margin-bottom: 20px; }
+.back-link:hover { color: #f97316; }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e580f92e-6fd0-405b-bce3-f8d667558732"></script>
+</head>
+<body>
+<div class="container">
+<a href="/learn.html" class="back-link">&larr; Back to Course</a>
+<h1>Lesson 15: Error Handling</h1>
+<div class="meta"><span class="badge">Intermediate</span><span>&#9200; 7 min</span></div>
+
+<p>Errors happen — users enter invalid input, files are missing, networks fail, data is corrupted. Instead of letting your program crash with an ugly traceback, you can <strong>handle exceptions</strong> gracefully using try/except blocks. Python's exception handling is both powerful and flexible, allowing you to respond to errors in fine-grained ways.</p>
+
+<pre><span class="kw">try</span>:
+    n = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">"Enter a number: "</span>))
+    <span class="kw">print</span>(<span class="num">10</span> / n)
+<span class="kw">except</span> <span class="va">ValueError</span>:
+    <span class="kw">print</span>(<span class="str">"That's not a number!"</span>)
+<span class="kw">except</span> <span class="va">ZeroDivisionError</span>:
+    <span class="kw">print</span>(<span class="str">"Can't divide by zero!"</span>)
+<span class="kw">else</span>:
+    <span class="kw">print</span>(<span class="str">"No errors!"</span>)
+<span class="kw">finally</span>:
+    <span class="kw">print</span>(<span class="str">"Done"</span>)</pre>
+
+<h2>The complete try/except/else/finally pattern:</h2>
+<ul>
+<li><strong>try</strong> — wrap code that might raise an exception here. If an error occurs, the rest of the try block is skipped immediately.</li>
+<li><strong>except SomeError</strong> — catches a specific exception type. You can have multiple except blocks for different error types. Use <code>except Exception as e:</code> to capture the exception object and inspect its message (<code>str(e)</code>). A bare <code>except:</code> catches everything, including <code>SystemExit</code> and <code>KeyboardInterrupt</code> — avoid it or use <code>except Exception:</code> instead.</li>
+<li><strong>else</strong> — runs only if no exception occurred in the try block. This is where you put "success path" code. It's better than putting it in the try block because it won't accidentally catch exceptions from unrelated code.</li>
+<li><strong>finally</strong> — always runs, whether an exception happened or not. Ideal for cleanup: closing files, releasing locks, closing network connections, restoring state.</li>
+</ul>
+
+<h2>Exception hierarchy:</h2>
+<p>Python exceptions are organized in a class hierarchy. <code>BaseException</code> is the root (don't catch this). <code>Exception</code> is the base for all built-in, non-system exceptions. Common subclasses include <code>ValueError</code> (wrong value), <code>TypeError</code> (wrong type), <code>IndexError</code> (list index out of range), <code>KeyError</code> (missing dict key), <code>FileNotFoundError</code> (missing file), <code>ZeroDivisionError</code> (division by zero), <code>AttributeError</code> (missing attribute), and <code>ImportError</code> (missing module). You can catch a parent type to handle a family of related exceptions: <code>except (ValueError, TypeError):</code>.</p>
+
+<h2>Raising exceptions</h2>
+<p>— sometimes you need to signal an error yourself: <code>raise ValueError("Invalid input")</code>. You can also re-raise the current exception inside an except block with bare <code>raise</code> (preserving the original traceback). Create <strong>custom exceptions</strong> by inheriting from <code>Exception</code>:</p>
+
+<pre><span class="kw">class</span> <span class="fn">InsufficientFundsError</span>(<span class="va">Exception</span>):
+    <span class="cm">"""Raised when account balance is too low."""</span>
+    <span class="kw">pass</span></pre>
+
+<p>Then raise and catch it like any built-in exception. Custom exceptions make your code's error handling more expressive and domain-specific.</p>
+
+<h2>Common mistakes:</h2>
+<p>Catching too broadly (<code>except:</code> or <code>except Exception:</code> when you only expect one type) — this can hide bugs. Not ordering except blocks from most-specific to least-specific (Python checks them in order, so a generic handler before a specific one will catch everything). Using exceptions for normal control flow — they should be for exceptional situations, not regular program logic. Swallowing exceptions silently with <code>except: pass</code> — at minimum log the error.</p>
+
+<h2>Best practices:</h2>
+<p>Catch only exceptions you can actually handle. Let unexpected exceptions propagate to the top level where they can be logged or shown to the user. Be as specific as possible about which exceptions you catch. Use <code>else</code> for success-path code to separate it from error-prone code in the try block. Use <code>finally</code> for cleanup that must happen regardless of success or failure. When raising exceptions, provide informative messages that help with debugging.</p>
+
+<h2>Real-world use case:</h2>
+<p>When processing user uploaded files, you might wrap the entire process: <code>try: data = parse_file(path)</code> — catching <code>FileNotFoundError</code> (file missing), <code>PermissionError</code> (no access), <code>json.JSONDecodeError</code> (malformed content), and <code>UnicodeDecodeError</code> (wrong encoding) — each with a different user-friendly error message, plus a <code>finally</code> block to clean up temporary files.</p>
+
+<div class="tip"><strong>Try it:</strong> Add an <code>else</code> block to the code that prints a success confirmation. Add a <code>finally</code> that prints "Operation complete". Then create a custom exception class and raise it conditionally. Finally, try catching multiple exception types with a tuple: <code>except (ValueError, ZeroDivisionError) as e:</code>.</div>
+
+<div class="cta">
+<a href="/learn.html#lesson-14">Open Interactive Lesson &rarr;</a>
+<p>Run this code directly in your browser with our free Python IDE.</p>
+</div>
+
+<div class="nav-links">
+<a href="/lesson-14-list-comprehensions.html">&larr; Lesson 14: List Comprehensions</a>
+<a href="/lesson-16-file-handling.html" class="next">Lesson 16: File Handling &rarr;</a>
+</div>
+<div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
+&copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="description" content="Python Modules and Imports - learn how to import and organize Python code. Master import styles, __name__ == __main__, packages, and sys.path.">
+<meta name="keywords" content="python modules, python imports, import statement, __name__ == __main__, python packages, sys.path">
+<link rel="canonical" href="https://majedql29-spec.github.io/JometCode/lesson-24-modules-imports.html">
+<link rel="stylesheet" href="/design.css">
+  <meta property="og:title" content="Python Modules & Imports — Organize Your Code | JometCode">
+<meta property="og:description" content="Learn Python modules and imports: import styles, __name__ == __main__, creating packages, sys.path, and best practices for organizing code.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://majedql29-spec.github.io/JometCode/lesson-24-modules-imports.html">
+<meta property="og:site_name" content="JometCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Modules & Imports — Organize Your Code | JometCode">
+<meta name="twitter:description" content="Learn Python modules and imports.">
+<title>Python Modules & Imports — Free Interactive Tutorial | JometCode</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://majedql29-spec.github.io/JometCode"},{"@type":"ListItem","position":2,"name":"Learn Python","item":"https://majedql29-spec.github.io/JometCode/learn.html"},{"@type":"ListItem","position":3,"name":"Modules & Imports","item":"https://majedql29-spec.github.io/JometCode/lesson-24-modules-imports.html"}]}</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b10; color: #e8e8ee; line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+h1 { font-size: 26px; margin-bottom: 4px; color: #f97316; font-family: ui-monospace, 'SF Mono', monospace; }
+.meta { color: #5a5a6a; font-size: 13px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #22222e; display: flex; gap: 16px; }
+.meta span { display: flex; align-items: center; gap: 4px; }
+.meta .badge { display: inline-block; background: rgba(249,115,22,0.12); color: #f97316; font-size: 11px; padding: 1px 10px; border-radius: 10px; font-weight: 600; }
+h2 { font-size: 18px; color: #e8e8ee; margin: 24px 0 10px; }
+p { margin: 10px 0; color: #d1d5e0; font-size: 14px; }
+code { background: #16161e; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #f97316; }
+pre { background: #16161e; border: 1px solid #22222e; border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 12px 0; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #d1d5e0; line-height: 1.5; }
+pre .kw { color: #c586c0; } pre .fn { color: #dcdcaa; } pre .str { color: #ce9178; } pre .cm { color: #6a9955; font-style: italic; } pre .num { color: #b5cea8; } pre .op { color: #d4d4d4; } pre .va { color: #9cdcfe; }
+ul { margin: 8px 0 8px 20px; color: #d1d5e0; font-size: 14px; }
+li { margin: 4px 0; }
+.tip { background: rgba(249,115,22,0.06); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13px; color: #d1d5e0; }
+.nav-links { display: flex; justify-content: space-between; margin-top: 32px; padding-top: 16px; border-top: 1px solid #22222e; }
+.nav-links a { color: #f97316; text-decoration: none; font-size: 14px; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links .next { text-align: right; }
+.cta { text-align: center; margin: 32px 0; padding: 20px; background: #121216; border: 1px solid #22222e; border-radius: 10px; }
+.cta a { display: inline-block; background: #f97316; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+.cta a:hover { background: #ea580c; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: #5a5a6a; font-size: 13px; text-decoration: none; margin-bottom: 20px; }
+.back-link:hover { color: #f97316; }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e580f92e-6fd0-405b-bce3-f8d667558732"></script>
+</head>
+<body>
+<div class="container">
+<a href="/learn.html" class="back-link">&larr; Back to Course</a>
+<h1>Lesson 24: Modules &amp; Imports</h1>
+<div class="meta"><span class="badge">Advanced</span><span>&#9200; 8 min</span></div>
+
+<p>Python's standard library is vast — hundreds of modules covering mathematics, networking, file I/O, data processing, web development, and more. The <strong>import</strong> statement is how you access this power and organize your own code into reusable units. Understanding import styles and module structure is essential for writing maintainable Python projects at any scale.</p>
+
+<h2>Import styles and when to use each</h2>
+<ul>
+<li><code>import math</code> — imports the entire module. Access with <code>math.sqrt()</code>. Best when you use many functions from a module — the prefix prevents naming collisions and makes the source clear.</li>
+<li><code>from math import sqrt, pi</code> — imports specific names directly. Best when you use only a few items and the module name would add unnecessary verbosity.</li>
+<li><code>from math import *</code> — imports all public names. <strong>Avoid this</strong> — it pollutes your namespace, can silently override existing names, and makes it impossible to tell where a function comes from.</li>
+<li><code>import math as m</code> — imports with an alias. Use for modules with long names: <code>import numpy as np; import pandas as pd</code> — these are community conventions you should follow.</li>
+</ul>
+
+<pre><span class="kw">import</span> math
+<span class="kw">from</span> random <span class="kw">import</span> <span class="va">randint</span>
+
+<span class="kw">print</span>(<span class="str">f"Pi: </span>{<span class="va">math</span>.<span class="va">pi</span>}<span class="str">"</span>)
+<span class="kw">print</span>(<span class="str">f"Random 1-10: </span>{<span class="fn">randint</span>(<span class="num">1</span>, <span class="num">10</span>)}<span class="str">"</span>)</pre>
+
+<h2>The __name__ == "__main__" pattern</h2>
+<p>This allows a file to be both used as a reusable module and run as a standalone script:</p>
+<pre><span class="kw">def</span> <span class="fn">main</span>():
+    <span class="kw">print</span>(<span class="str">"Running as script..."</span>)
+
+<span class="kw">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="str">"__main__"</span>:
+    <span class="fn">main</span>()</pre>
+<p>When you run a Python file directly (<code>python myfile.py</code>), Python sets <code>__name__</code> to <code>"__main__"</code>. When the file is imported as a module, <code>__name__</code> is set to the module's name. This pattern lets you put test code or CLI logic inside the guard so it doesn't run when the module is imported elsewhere.</p>
+
+<h2>Creating your own modules and packages</h2>
+<p>Any <code>.py</code> file is a module. A <strong>package</strong> is a directory of modules with an <code>__init__.py</code> file. Structure:</p>
+<pre>my_project/
+  __init__.py
+  utils/
+    __init__.py
+    strings.py
+    files.py
+  main.py</pre>
+<p>Then <code>from my_project.utils.strings import capitalize</code> or <code>from my_project import utils</code>. The <code>__init__.py</code> can control what gets exported via <code>__all__</code> or run initialization code.</p>
+
+<h2>sys.path and how Python finds modules</h2>
+<p>When you import a module, Python searches the list of directories in <code>sys.path</code>: (1) the directory of the script being run, (2) directories listed in the <code>PYTHONPATH</code> environment variable, (3) standard library directories, (4) site-packages (for third-party packages installed via pip).</p>
+
+<h2>Common mistakes</h2>
+<p>Circular imports — module A imports module B which imports module A. Restructure code or use lazy imports inside functions. Using <code>from x import *</code> in production code. Not organizing imports — causing confusion about where functions come from. Putting executable code (not inside a function or guard) in a module that's meant to be imported.</p>
+
+<h2>Best practices</h2>
+<p>Organize imports in three groups, separated by blank lines: standard library, third-party, local modules. Within each group, sort alphabetically. Use absolute imports (<code>from package.module import name</code>) rather than relative imports (<code>from ..module import name</code>). Use <code>if __name__ == "__main__":</code> guard for all script files.</p>
+
+<h2>Real-world use case</h2>
+<p>A data analysis project might import: <code>import os, sys</code> (stdlib), <code>import pandas as pd, import numpy as np, import matplotlib.pyplot as plt</code> (third-party), <code>from myproject.loaders import load_data; from myproject.analysis import calculate_stats</code> (local). This three-group organization makes dependencies immediately visible and enables reuse across different scripts.</p>
+
+<div class="tip"><strong>Try it:</strong> Create a module in your mind: write a function in the editor, then imagine putting it in a separate file <code>utils.py</code> and importing it. Then use the <code>if __name__ == "__main__":</code> pattern to add test code that only runs when the file is executed directly. Finally, import a module with an alias: <code>import datetime as dt</code> and use <code>dt.datetime.now()</code>.</div>
+
+<div class="cta">
+<a href="/learn.html#lesson-0">Open Interactive Lesson &rarr;</a>
+<p>Run this code directly in your browser with our free Python IDE.</p>
+</div>
+
+<div class="nav-links">
+<a href="/lesson-23-classes-oop.html">&larr; Lesson 23: Classes &amp; OOP</a>
+<a href="/lesson-25-decorators.html" class="next">Lesson 25: Decorators &rarr;</a>
+</div>
+<div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
+&copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>
+</div>
+</div>
+</body>
+</html>

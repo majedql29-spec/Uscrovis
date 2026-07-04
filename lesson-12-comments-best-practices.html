@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="description" content="Python Comments & Best Practices - learn how to write clean, professional Python code with comments, docstrings, and PEP 8 style guide. Free interactive Python tutorial.">
+<meta name="keywords" content="python comments, python best practices, python docstrings, pep 8 python, clean code python">
+<link rel="canonical" href="https://majedql29-spec.github.io/JometCode/lesson-12-comments-best-practices.html">
+<link rel="stylesheet" href="/design.css">
+  <meta property="og:title" content="Python Comments & Best Practices — Clean Code | JometCode">
+<meta property="og:description" content="Learn to write clean, professional Python code. Master comments, docstrings, PEP 8 conventions, and best practices for readable code.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://majedql29-spec.github.io/JometCode/lesson-12-comments-best-practices.html">
+<meta property="og:site_name" content="JometCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Comments & Best Practices — Clean Code | JometCode">
+<meta name="twitter:description" content="Learn Python comments and best practices with our free interactive tutorial.">
+<title>Python Comments & Best Practices — Free Interactive Python Tutorial | JometCode</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://majedql29-spec.github.io/JometCode"},{"@type":"ListItem","position":2,"name":"Learn Python","item":"https://majedql29-spec.github.io/JometCode/learn.html"},{"@type":"ListItem","position":3,"name":"Comments & Best Practices","item":"https://majedql29-spec.github.io/JometCode/lesson-12-comments-best-practices.html"}]}</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b10; color: #e8e8ee; line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+h1 { font-size: 26px; margin-bottom: 4px; color: #f97316; font-family: ui-monospace, 'SF Mono', monospace; }
+.meta { color: #5a5a6a; font-size: 13px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #22222e; display: flex; gap: 16px; }
+.meta span { display: flex; align-items: center; gap: 4px; }
+.meta .badge { display: inline-block; background: rgba(249,115,22,0.12); color: #f97316; font-size: 11px; padding: 1px 10px; border-radius: 10px; font-weight: 600; }
+h2 { font-size: 18px; color: #e8e8ee; margin: 24px 0 10px; }
+p { margin: 10px 0; color: #d1d5e0; font-size: 14px; }
+code { background: #16161e; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #f97316; }
+pre { background: #16161e; border: 1px solid #22222e; border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 12px 0; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #d1d5e0; line-height: 1.5; }
+pre .kw { color: #c586c0; } pre .fn { color: #dcdcaa; } pre .str { color: #ce9178; } pre .cm { color: #6a9955; font-style: italic; } pre .num { color: #b5cea8; } pre .op { color: #d4d4d4; }
+ul { margin: 8px 0 8px 20px; color: #d1d5e0; font-size: 14px; }
+li { margin: 4px 0; }
+.tip { background: rgba(249,115,22,0.06); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13px; color: #d1d5e0; }
+.nav-links { display: flex; justify-content: space-between; margin-top: 32px; padding-top: 16px; border-top: 1px solid #22222e; }
+.nav-links a { color: #f97316; text-decoration: none; font-size: 14px; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links .next { text-align: right; }
+.cta { text-align: center; margin: 32px 0; padding: 20px; background: #121216; border: 1px solid #22222e; border-radius: 10px; }
+.cta a { display: inline-block; background: #f97316; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+.cta a:hover { background: #ea580c; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: #5a5a6a; font-size: 13px; text-decoration: none; margin-bottom: 20px; }
+.back-link:hover { color: #f97316; }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e580f92e-6fd0-405b-bce3-f8d667558732"></script>
+</head>
+<body>
+<div class="container">
+<a href="/learn.html" class="back-link">&larr; Back to Course</a>
+<h1>Lesson 12: Comments &amp; Best Practices</h1>
+<div class="meta"><span class="badge">Beginner</span><span>&#9200; 5 min</span></div>
+
+<h2>Comments</h2>
+<p>exist to explain code to human readers — including your future self who will come back to this code six months from now. Writing good comments is a skill that separates professional developers from beginners. In Python, use <code>#</code> for single-line comments and triple-quoted strings (<code>""" """</code>) for multi-line docstrings. A good comment explains <em>why</em> something is done a certain way, not <em>what</em> the code does — the code itself should be clear enough to communicate what it does without comments.</p>
+<h2>Types of comments in Python:</h2>
+<ul>
+<li><strong>Inline comments</strong> (<code>#</code>) — explain a specific line or block. Use sparingly and only when the code is not self-explanatory.</li>
+<li><strong>Docstrings</strong> (<code>""" """</code>) — document functions, classes, and modules. These can be accessed programmatically via <code>help()</code> or <code>__doc__</code>, making them essential for creating usable libraries.</li>
+<li><strong>TODO comments</strong> (<code># TODO: fix this later</code>) — mark unfinished work. Many IDEs highlight these for easy navigation.</li>
+</ul>
+<h2>Best practices for writing clean, professional Python:</h2>
+<ul>
+<li><strong>Use meaningful names</strong> — <code>user_age</code> is far better than <code>ua</code> or <code>x</code>. Good names eliminate the need for many comments.</li>
+<li><strong>Follow PEP 8</strong> — Python's official style guide. Key rules: 4-space indentation (not tabs), 2 blank lines around top-level functions, 1 blank line around methods, lowercase_with_underscores for variables and functions, UPPER_CASE for constants.</li>
+<li><strong>Keep functions small</strong> — each function should do exactly one thing and do it well. If a function is doing multiple things, split it. Small functions are easier to test, debug, and reuse.</li>
+<li><strong>Avoid magic numbers</strong> — never scatter raw numbers like <code>86400</code> (seconds in a day) throughout your code. Instead, define a named constant: <code>SECONDS_IN_DAY = 86400</code>. This makes the code self-documenting and easy to change in one place.</li>
+<li><strong>Write docstrings for every public function, class, and module</strong> — they enable auto-generated documentation and help users understand how to use your code without reading the implementation.</li>
+<li><strong>DRY (Don't Repeat Yourself)</strong> — if you find yourself copy-pasting code, extract it into a function or variable. Repeated code is a breeding ground for bugs when you update one instance but forget to update the others.</li>
+<li><strong>Keep imports at the top</strong> — standard library imports first, then third-party, then your own modules, each group separated by a blank line.</li>
+</ul>
+<h2>Common mistakes in commenting:</h2>
+<ul>
+<li>Writing obvious comments: <code>x = x + 1  # increment x by 1</code> — the code already says this. Explain why, not what.</li>
+<li>Letting comments rot: When you update code, update the comments too. Outdated comments are worse than no comments — they actively mislead readers.</li>
+<li>Using comments as a substitute for clean code: Instead of commenting confusing logic, rewrite the logic to be clearer.</li>
+</ul>
+<p>Remember the golden rule of Python: <strong>Readability counts</strong>. Code is read far more often than it is written. Spend the extra few seconds to make your code clear — your future self and your teammates will thank you.</p>
+
+<pre><span class="cm"># This is a single-line comment</span>
+
+<span class="str">"""
+This is a multi-line docstring.
+It describes what the code does.
+"""</span>
+
+<span class="kw">def</span> <span class="fn">greet</span>(name):
+    <span class="str">"""Return a friendly greeting."""</span>
+    <span class="kw">return</span> <span class="str">f"Hello, {name}!"</span>
+
+<span class="cm"># Use descriptive variable names</span>
+user_age = <span class="num">25</span>
+total_price = <span class="num">49.99</span>
+
+<span class="cm"># Avoid magic numbers</span>
+TAX_RATE = <span class="num">0.08</span>
+tax = total_price * TAX_RATE</pre>
+
+<div class="tip"><strong>Try it:</strong> Add a function with a docstring and use <code>help(function_name)</code> to see how Python displays it. Then add a <code># TODO</code> comment about a feature you would add next.</div>
+
+<div class="cta">
+<a href="/learn.html#lesson-0">Open Interactive Lesson &rarr;</a>
+<p>Run this code directly in your browser with our free Python IDE.</p>
+</div>
+
+<div class="nav-links">
+<a href="/lesson-11-input-output.html">&larr; Lesson 11: Input &amp; Output</a>
+<a href="/lesson-13-dictionaries.html" class="next">Lesson 13: Dictionaries &rarr;</a>
+</div>
+<div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
+&copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>
+</div>
+</div>
+</body>
+</html>

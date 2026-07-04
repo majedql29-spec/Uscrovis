@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="description" content="Python operators guide &mdash; arithmetic, comparison, logical, and augmented assignment operators. Learn +, -, *, /, //, %, ** with examples.">
+<meta name="keywords" content="python operators, arithmetic operators, comparison operators, floor division, modulus operator, learn python">
+<link rel="canonical" href="https://majedql29-spec.github.io/JometCode/lesson-07-basic-operators.html">
+<link rel="stylesheet" href="/design.css">
+  <meta property="og:title" content="Python Basic Operators &mdash; Free Tutorial | JometCode">
+<meta property="og:description" content="Learn Python operators: arithmetic (+, -, *, /, //, %, **), comparison (==, !=, >, <), logical (and, or, not), and augmented assignment operators.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://majedql29-spec.github.io/JometCode/lesson-07-basic-operators.html">
+<meta property="og:site_name" content="JometCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Basic Operators &mdash; Free Tutorial | JometCode">
+<meta name="twitter:description" content="Learn Python operators with our free interactive tutorial.">
+<title>Python Basic Operators &mdash; Free Interactive Tutorial | JometCode</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://majedql29-spec.github.io/JometCode"},{"@type":"ListItem","position":2,"name":"Learn Python","item":"https://majedql29-spec.github.io/JometCode/learn.html"},{"@type":"ListItem","position":3,"name":"Basic Operators","item":"https://majedql29-spec.github.io/JometCode/lesson-07-basic-operators.html"}]}</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b10; color: #e8e8ee; line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+h1 { font-size: 26px; margin-bottom: 4px; color: #f97316; font-family: ui-monospace, 'SF Mono', monospace; }
+.meta { color: #5a5a6a; font-size: 13px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #22222e; display: flex; gap: 16px; }
+.meta span { display: flex; align-items: center; gap: 4px; }
+.meta .badge { display: inline-block; background: rgba(249,115,22,0.12); color: #f97316; font-size: 11px; padding: 1px 10px; border-radius: 10px; font-weight: 600; }
+h2 { font-size: 18px; color: #e8e8ee; margin: 24px 0 10px; }
+p { margin: 10px 0; color: #d1d5e0; font-size: 14px; }
+code { background: #16161e; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #f97316; }
+pre { background: #16161e; border: 1px solid #22222e; border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 12px 0; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #d1d5e0; line-height: 1.5; }
+pre .kw { color: #c586c0; } pre .fn { color: #dcdcaa; } pre .str { color: #ce9178; } pre .cm { color: #6a9955; font-style: italic; } pre .num { color: #b5cea8; } pre .op { color: #d4d4d4; }
+ul { margin: 8px 0 8px 20px; color: #d1d5e0; font-size: 14px; }
+li { margin: 4px 0; }
+.tip { background: rgba(249,115,22,0.06); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13px; color: #d1d5e0; }
+.nav-links { display: flex; justify-content: space-between; margin-top: 32px; padding-top: 16px; border-top: 1px solid #22222e; }
+.nav-links a { color: #f97316; text-decoration: none; font-size: 14px; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links .next { text-align: right; }
+.cta { text-align: center; margin: 32px 0; padding: 20px; background: #121216; border: 1px solid #22222e; border-radius: 10px; }
+.cta a { display: inline-block; background: #f97316; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+.cta a:hover { background: #ea580c; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: #5a5a6a; font-size: 13px; text-decoration: none; margin-bottom: 20px; }
+.back-link:hover { color: #f97316; }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e580f92e-6fd0-405b-bce3-f8d667558732"></script>
+</head>
+<body>
+<div class="container">
+<a href="/learn.html" class="back-link">&larr; Back to Course</a>
+<h1>Lesson 07: Basic Operators</h1>
+<div class="meta"><span class="badge">Beginner</span><span>&#9200; 7 min</span></div>
+
+<p>Python supports a full set of mathematical and logical operators for working with numbers, making it an excellent language for everything from simple arithmetic to complex scientific computing. Python follows the standard order of operations (PEMDAS: Parentheses, Exponents, Multiplication/Division, Addition/Subtraction).</p>
+
+<h2>Arithmetic operators</h2>
+
+<ul>
+<li><code>+</code> addition and string concatenation</li>
+<li><code>-</code> subtraction</li>
+<li><code>*</code> multiplication and string repetition (<code>"Hi" * 3</code> gives <code>"HiHiHi"</code>)</li>
+<li><code>/</code> division &mdash; always returns a <code>float</code>, even when dividing two integers (<code>6 / 3</code> returns <code>2.0</code>)</li>
+<li><code>//</code> floor division &mdash; divides and rounds down to the nearest integer</li>
+<li><code>%</code> modulus &mdash; returns the remainder of division, useful for checking even/odd numbers or cycling through ranges</li>
+<li><code>**</code> exponentiation &mdash; raises a number to a power (<code>2 ** 3</code> returns <code>8</code>)</li>
+</ul>
+
+<h2>Comparison operators</h2>
+<p>compare two values and return a boolean result:</p>
+
+<ul>
+<li><code>==</code> &mdash; equal to. Note the double equals &mdash; a single <code>=</code> is for assignment</li>
+<li><code>!=</code> &mdash; not equal to</li>
+<li><code>&gt;</code> &mdash; greater than</li>
+<li><code>&lt;</code> &mdash; less than</li>
+<li><code>&gt;=</code> &mdash; greater than or equal</li>
+<li><code>&lt;=</code> &mdash; less than or equal</li>
+</ul>
+
+<h2>Logical operators</h2>
+<p>combine multiple boolean expressions:</p>
+
+<ul>
+<li><code>and</code> &mdash; true only if both sides are true</li>
+<li><code>or</code> &mdash; true if at least one side is true</li>
+<li><code>not</code> &mdash; inverts the boolean value</li>
+</ul>
+
+<p>Python also supports <strong>augmented assignment operators</strong> that combine an operation with assignment: <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, etc. For example, <code>x += 5</code> is shorthand for <code>x = x + 5</code>. These operators are common in loops and accumulators.</p>
+
+<h2>Important detail about <code>//</code></h2>
+<p>Floor division always rounds down to the nearest integer. For positive numbers (<code>10 // 3 = 3</code>) this matches integer division. But for negative numbers, it rounds away from zero: <code>-10 // 3</code> gives <code>-4</code>, not <code>-3</code>. The <code>%</code> operator follows the same sign convention, so <code>-10 % 3</code> gives <code>2</code>. This behavior is mathematically consistent but can surprise newcomers.</p>
+
+<h2>Quick tip</h2>
+<p>Use <code>% 2 == 0</code> to check if a number is even, and <code>% 2 == 1</code> for odd. The modulus operator is also useful for constraining values to a range, like wrapping around a circular buffer or creating repeating patterns.</p>
+
+<pre><span class="op">a</span> <span class="op">=</span> <span class="num">10</span>
+<span class="op">b</span> <span class="op">=</span> <span class="num">3</span>
+<span class="kw">print</span>(<span class="str">"Addition:"</span>, <span class="op">a</span> <span class="op">+</span> <span class="op">b</span>)
+<span class="kw">print</span>(<span class="str">"Subtraction:"</span>, <span class="op">a</span> <span class="op">-</span> <span class="op">b</span>)
+<span class="kw">print</span>(<span class="str">"Multiplication:"</span>, <span class="op">a</span> <span class="op">*</span> <span class="op">b</span>)
+<span class="kw">print</span>(<span class="str">"Division:"</span>, <span class="op">a</span> <span class="op">/</span> <span class="op">b</span>)
+<span class="kw">print</span>(<span class="str">"Floor Div:"</span>, <span class="op">a</span> <span class="op">//</span> <span class="op">b</span>)
+<span class="kw">print</span>(<span class="str">"Modulus:"</span>, <span class="op">a</span> <span class="op">%</span> <span class="op">b</span>)
+<span class="kw">print</span>(<span class="str">"Power:"</span>, <span class="op">a</span> <span class="op">**</span> <span class="op">b</span>)
+<span class="kw">print</span>(<span class="str">"Is a &gt; b?"</span>, <span class="op">a</span> <span class="op">&gt;</span> <span class="op">b</span>)
+<span class="kw">print</span>(<span class="str">"Is a == b?"</span>, <span class="op">a</span> <span class="op">==</span> <span class="op">b</span>)</pre>
+
+<div class="tip"><strong>Try it:</strong> Add a line using <code>%</code> to check if <code>a</code> is even: <code>print("a is even?", a % 2 == 0)</code>. Then experiment with <code>+=</code> by adding <code>a += 5</code> and printing <code>a</code> again.</div>
+
+<div class="cta">
+<a href="/learn.html#lesson-6">Open Interactive Lesson &rarr;</a>
+<p>Run this code directly in your browser with our free Python IDE.</p>
+</div>
+
+<div class="nav-links">
+<a href="/lesson-06-functions.html">&larr; Lesson 06: Functions</a>
+<a href="/lesson-08-string-methods.html" class="next">Lesson 08: String Methods &rarr;</a>
+</div>
+<div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
+&copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>
+</div>
+</div>
+</body>
+</html>

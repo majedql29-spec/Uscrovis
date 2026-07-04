@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="description" content="Python conditions and if/else statements &mdash; learn if, elif, else, logical operators (and/or/not), ternary operator, and comparison best practices.">
+<meta name="keywords" content="python if else, elif python, logical operators, ternary operator python, conditional statements python">
+<link rel="canonical" href="https://majedql29-spec.github.io/JometCode/lesson-05-conditions-if-else.html">
+<link rel="stylesheet" href="/design.css">
+  <meta property="og:title" content="Python Conditions & If/Else &mdash; Free Tutorial | JometCode">
+<meta property="og:description" content="Learn Python conditionals: if, elif, else, logical operators (and/or/not), ternary expressions, and best practices for decision-making in code.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://majedql29-spec.github.io/JometCode/lesson-05-conditions-if-else.html">
+<meta property="og:site_name" content="JometCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Conditions & If/Else &mdash; Free Tutorial | JometCode">
+<meta name="twitter:description" content="Learn Python conditionals with our free interactive tutorial.">
+<title>Python Conditions & If/Else &mdash; Free Interactive Tutorial | JometCode</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://majedql29-spec.github.io/JometCode"},{"@type":"ListItem","position":2,"name":"Learn Python","item":"https://majedql29-spec.github.io/JometCode/learn.html"},{"@type":"ListItem","position":3,"name":"Conditions & If/Else","item":"https://majedql29-spec.github.io/JometCode/lesson-05-conditions-if-else.html"}]}</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b10; color: #e8e8ee; line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+h1 { font-size: 26px; margin-bottom: 4px; color: #f97316; font-family: ui-monospace, 'SF Mono', monospace; }
+.meta { color: #5a5a6a; font-size: 13px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #22222e; display: flex; gap: 16px; }
+.meta span { display: flex; align-items: center; gap: 4px; }
+.meta .badge { display: inline-block; background: rgba(249,115,22,0.12); color: #f97316; font-size: 11px; padding: 1px 10px; border-radius: 10px; font-weight: 600; }
+h2 { font-size: 18px; color: #e8e8ee; margin: 24px 0 10px; }
+p { margin: 10px 0; color: #d1d5e0; font-size: 14px; }
+code { background: #16161e; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #f97316; }
+pre { background: #16161e; border: 1px solid #22222e; border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 12px 0; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #d1d5e0; line-height: 1.5; }
+pre .kw { color: #c586c0; } pre .fn { color: #dcdcaa; } pre .str { color: #ce9178; } pre .cm { color: #6a9955; font-style: italic; } pre .num { color: #b5cea8; } pre .op { color: #d4d4d4; }
+ul { margin: 8px 0 8px 20px; color: #d1d5e0; font-size: 14px; }
+li { margin: 4px 0; }
+.tip { background: rgba(249,115,22,0.06); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13px; color: #d1d5e0; }
+.nav-links { display: flex; justify-content: space-between; margin-top: 32px; padding-top: 16px; border-top: 1px solid #22222e; }
+.nav-links a { color: #f97316; text-decoration: none; font-size: 14px; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links .next { text-align: right; }
+.cta { text-align: center; margin: 32px 0; padding: 20px; background: #121216; border: 1px solid #22222e; border-radius: 10px; }
+.cta a { display: inline-block; background: #f97316; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+.cta a:hover { background: #ea580c; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: #5a5a6a; font-size: 13px; text-decoration: none; margin-bottom: 20px; }
+.back-link:hover { color: #f97316; }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e580f92e-6fd0-405b-bce3-f8d667558732"></script>
+</head>
+<body>
+<div class="container">
+<a href="/learn.html" class="back-link">&larr; Back to Course</a>
+<h1>Lesson 05: Conditions &amp; If/Else</h1>
+<div class="meta"><span class="badge">Beginner</span><span>&#9200; 8 min</span></div>
+
+<p>Conditional statements let your program make decisions and execute different code paths based on certain conditions. They are the foundation of all logic in programming &mdash; without them, every program would run the same sequence of instructions every time, regardless of input or state.</p>
+
+<p>Use <strong><code>if</code></strong> to check a primary condition, <strong><code>elif</code></strong> (short for "else if") to check additional conditions when the previous ones were false, and <strong><code>else</code></strong> as a catch-all fallback when no condition is met. The condition must evaluate to a boolean value &mdash; either <code>True</code> or <code>False</code>. Python treats certain values as "falsy": <code>0</code>, <code>None</code>, empty strings, empty lists &mdash; all evaluate to <code>False</code> in a boolean context.</p>
+
+<p>Python uses <strong>indentation</strong> (typically 4 spaces) to define which statements belong to each branch. This is not a style suggestion &mdash; it is a required part of Python's syntax. Unlike C, Java, or JavaScript which use curly braces, Python's indentation-based structure makes code visually consistent and readable. Every line indented under an <code>if</code> runs when the condition is true. When the indentation returns to the previous level, the conditional block ends.</p>
+
+<p>You can chain multiple conditions using <strong>logical operators</strong>:</p>
+
+<ul>
+<li><code>and</code> &mdash; both conditions must be true: <code>if age >= 18 and has_id:</code></li>
+<li><code>or</code> &mdash; at least one condition must be true: <code>if is_admin or is_owner:</code></li>
+<li><code>not</code> &mdash; inverts a condition: <code>if not logged_in:</code></li>
+</ul>
+
+<p>Python also offers a concise <strong>ternary operator</strong> (also called a conditional expression) for simple if/else assignments in a single line: <code>status = "Adult" if age >= 18 else "Minor"</code>. This is useful for quick conditional assignments but should be avoided for complex logic where readability would suffer.</p>
+
+<h2>Common mistake to avoid</h2>
+<p>Using a single <code>=</code> (assignment) instead of <code>==</code> (equality comparison) inside a condition. Writing <code>if x = 5</code> will cause a <code>SyntaxError</code>. Always use <code>==</code> to compare values.</p>
+
+<h2>Best practice</h2>
+<p>For checking if a value is <code>None</code>, use <code>is None</code> instead of <code>== None</code>. The <code>is</code> operator checks identity, which is the correct way to compare to <code>None</code>.</p>
+
+<pre><span class="op">age</span> <span class="op">=</span> <span class="num">18</span>
+<span class="kw">if</span> <span class="op">age</span> <span class="op">>=</span> <span class="num">18</span>:
+    <span class="kw">print</span>(<span class="str">"You can vote!"</span>)
+<span class="kw">elif</span> <span class="op">age</span> <span class="op">>=</span> <span class="num">16</span>:
+    <span class="kw">print</span>(<span class="str">"Almost there!"</span>)
+<span class="kw">else</span>:
+    <span class="kw">print</span>(<span class="str">"Too young"</span>)
+
+<span class="cm"># Ternary</span>
+<span class="op">status</span> <span class="op">=</span> <span class="str">"Adult"</span> <span class="kw">if</span> <span class="op">age</span> <span class="op">>=</span> <span class="num">18</span> <span class="kw">else</span> <span class="str">"Minor"</span>
+<span class="kw">print</span>(<span class="op">status</span>)</pre>
+
+<div class="tip"><strong>Try it:</strong> Change <code>age</code> to 16 and see how the output changes because the <code>elif</code> branch runs instead. Then try setting <code>age = 10</code> to trigger the <code>else</code> branch. Add a new <code>elif</code> condition of your own.</div>
+
+<div class="cta">
+<a href="/learn.html#lesson-4">Open Interactive Lesson &rarr;</a>
+<p>Run this code directly in your browser with our free Python IDE.</p>
+</div>
+
+<div class="nav-links">
+<a href="/lesson-04-lists-loops.html">&larr; Lesson 04: Lists &amp; Loops</a>
+<a href="/lesson-06-functions.html" class="next">Lesson 06: Functions &rarr;</a>
+</div>
+<div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
+&copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="description" content="Python Dictionaries - learn key-value pairs, dict methods like get(), keys(), values(), items(), nested dictionaries, and dict comprehensions. Free interactive Python tutorial.">
+<meta name="keywords" content="python dictionaries, python dict methods, nested dictionary python, dict comprehension python">
+<link rel="canonical" href="https://majedql29-spec.github.io/JometCode/lesson-13-dictionaries.html">
+<link rel="stylesheet" href="/design.css">
+  <meta property="og:title" content="Python Dictionaries — Key-Value Power | JometCode">
+<meta property="og:description" content="Master Python dictionaries: key-value pairs, get(), keys(), values(), items(), nested dicts, comprehensions, and best practices.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://majedql29-spec.github.io/JometCode/lesson-13-dictionaries.html">
+<meta property="og:site_name" content="JometCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Dictionaries — Key-Value Power | JometCode">
+<meta name="twitter:description" content="Learn Python dictionaries with our free interactive tutorial.">
+<title>Python Dictionaries — Free Interactive Python Tutorial | JometCode</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://majedql29-spec.github.io/JometCode"},{"@type":"ListItem","position":2,"name":"Learn Python","item":"https://majedql29-spec.github.io/JometCode/learn.html"},{"@type":"ListItem","position":3,"name":"Dictionaries","item":"https://majedql29-spec.github.io/JometCode/lesson-13-dictionaries.html"}]}</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b10; color: #e8e8ee; line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+h1 { font-size: 26px; margin-bottom: 4px; color: #f97316; font-family: ui-monospace, 'SF Mono', monospace; }
+.meta { color: #5a5a6a; font-size: 13px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #22222e; display: flex; gap: 16px; }
+.meta span { display: flex; align-items: center; gap: 4px; }
+.meta .badge { display: inline-block; background: rgba(249,115,22,0.12); color: #f97316; font-size: 11px; padding: 1px 10px; border-radius: 10px; font-weight: 600; }
+h2 { font-size: 18px; color: #e8e8ee; margin: 24px 0 10px; }
+p { margin: 10px 0; color: #d1d5e0; font-size: 14px; }
+code { background: #16161e; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #f97316; }
+pre { background: #16161e; border: 1px solid #22222e; border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 12px 0; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #d1d5e0; line-height: 1.5; }
+pre .kw { color: #c586c0; } pre .fn { color: #dcdcaa; } pre .str { color: #ce9178; } pre .cm { color: #6a9955; font-style: italic; } pre .num { color: #b5cea8; } pre .op { color: #d4d4d4; }
+ul { margin: 8px 0 8px 20px; color: #d1d5e0; font-size: 14px; }
+li { margin: 4px 0; }
+.tip { background: rgba(249,115,22,0.06); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13px; color: #d1d5e0; }
+.nav-links { display: flex; justify-content: space-between; margin-top: 32px; padding-top: 16px; border-top: 1px solid #22222e; }
+.nav-links a { color: #f97316; text-decoration: none; font-size: 14px; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links .next { text-align: right; }
+.cta { text-align: center; margin: 32px 0; padding: 20px; background: #121216; border: 1px solid #22222e; border-radius: 10px; }
+.cta a { display: inline-block; background: #f97316; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+.cta a:hover { background: #ea580c; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: #5a5a6a; font-size: 13px; text-decoration: none; margin-bottom: 20px; }
+.back-link:hover { color: #f97316; }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e580f92e-6fd0-405b-bce3-f8d667558732"></script>
+</head>
+<body>
+<div class="container">
+<a href="/learn.html" class="back-link">&larr; Back to Course</a>
+<h1>Lesson 13: Dictionaries</h1>
+<div class="meta"><span class="badge">Intermediate</span><span>&#9200; 8 min</span></div>
+
+<p>Dictionaries store data as <strong>key-value pairs</strong>, making them one of Python's most versatile data structures. Each key is unique and maps to a value. Think of a real dictionary — you look up a word (key) and instantly get its definition (value). In code: <code>user = {"name": "Alice", "age": 30}</code>. Keys must be immutable types (strings, numbers, tuples), while values can be any type — lists, other dictionaries, functions, or even <code>None</code>.</p>
+<h2>Essential dict methods:</h2>
+<ul>
+<li><code>.get(key, default)</code> — safely access a key without raising <code>KeyError</code>. Returns <code>default</code> (or <code>None</code>) if the key is missing: <code>user.get("email", "no email")</code>. This is the idiomatic way to handle optional keys.</li>
+<li><code>.keys()</code> — returns a view of all keys. Useful for iteration or membership checks: <code>"name" in user.keys()</code>.</li>
+<li><code>.values()</code> — returns a view of all values. Great for aggregation: <code>sum(scores.values())</code>.</li>
+<li><code>.items()</code> — returns key-value pairs for unpacking in loops: <code>for k, v in user.items():</code>.</li>
+<li><code>.setdefault(key, default)</code> — returns the value if the key exists, otherwise inserts the default and returns it. Perfect for building nested structures.</li>
+<li><code>.update(other_dict)</code> — merges another dictionary into this one, overwriting existing keys.</li>
+<li><code>.pop(key, default)</code> — removes a key and returns its value (or default if missing).</li>
+</ul>
+<h2>Nested dictionaries</h2>
+<p>are dictionaries inside dictionaries — a common pattern for representing structured data like JSON API responses:</p>
+<p><code>users = {<br>&nbsp;&nbsp;"alice": {"age": 30, "city": "NYC"},<br>&nbsp;&nbsp;"bob": {"age": 25, "city": "London"}<br>}<br>print(users["alice"]["city"])  # NYC</code></p>
+<p>Access nested values safely by chaining <code>.get()</code>: <code>users.get("alice", {}).get("city")</code>. For deeply nested data, consider using <code>collections.defaultdict</code> or the <code>dict</code> approach with <code>setdefault</code>.</p>
+<h2>Dict comprehensions</h2>
+<p>offer a concise way to build dictionaries: <code>squares = {x: x**2 for x in range(5)}</code> produces <code>{0: 0, 1: 1, 2: 4, 3: 9, 4: 16}</code>. Add conditions: <code>{x: x**2 for x in range(10) if x % 2 == 0}</code>. You can also transform keys and values: <code>{k.lower(): v for k, v in data.items()}</code>.</p>
+<h2>When to use dict vs list:</h2>
+<p>Use dictionaries when you need to look up values by a meaningful key (like a name or ID). Use lists when the order of items matters or when you need to store a simple sequence. Dictionaries excel at membership testing (<code>key in dict</code> is O(1) on average) and representing structured records. Lists excel at ordered iteration and sequential access.</p>
+<h2>Common mistakes:</h2>
+<p>Using <code>dict[key]</code> without checking if the key exists (raises <code>KeyError</code>). Always prefer <code>.get()</code> for optional keys. Another mistake is modifying a dictionary while iterating over it — create a copy with <code>.copy()</code> or iterate over <code>list(dict.keys())</code> instead. Also beware that <code>{}</code> creates an empty dict, not an empty set (use <code>set()</code> for that).</p>
+<h2>Best practices:</h2>
+<p>Use descriptive key names (strings or meaningful constants). Prefer <code>.get()</code> over direct indexing for optional keys. Use <code>.items()</code> for iteration to avoid looking up values by key. For counting or grouping, use <code>collections.Counter</code> or <code>defaultdict</code> instead of manual dict logic. Since Python 3.7, dictionaries preserve insertion order — rely on this for predictable iteration.</p>
+<h2>Real-world use case:</h2>
+<p>Dictionaries are the backbone of JSON data processing. When you call a REST API, the response is almost always parsed into nested dictionaries. Configuration files, user profiles, cached data, and database records are all naturally modeled as dictionaries. They are also used internally by Python for namespaces, class attributes, and instance data.</p>
+
+<pre>user = {
+    <span class="str">"name"</span>: <span class="str">"JometCode"</span>,
+    <span class="str">"age"</span>: <span class="num">2</span>,
+    <span class="str">"language"</span>: <span class="str">"Python"</span>
+}
+<span class="kw">print</span>(user[<span class="str">"name"</span>])
+user[<span class="str">"version"</span>] = <span class="str">"1.0"</span>
+<span class="kw">for</span> key, val <span class="kw">in</span> user.items():
+    <span class="kw">print</span>(<span class="str">f"{key}: {val}"</span>)</pre>
+
+<div class="tip"><strong>Try it:</strong> Add a nested dictionary with <code>user["address"] = {"city": "Paris", "zip": "75001"}</code> then print <code>user["address"]["city"]</code>. Then try a dict comprehension: <code>{k: v.upper() if isinstance(v, str) else v for k, v in user.items()}</code>. Finally, use <code>.get()</code> with a default to safely access a missing key.</div>
+
+<div class="cta">
+<a href="/learn.html#lesson-0">Open Interactive Lesson &rarr;</a>
+<p>Run this code directly in your browser with our free Python IDE.</p>
+</div>
+
+<div class="nav-links">
+<a href="/lesson-12-comments-best-practices.html">&larr; Lesson 12: Comments &amp; Best Practices</a>
+<a href="/learn.html" class="next">More Lessons Coming Soon &rarr;</a>
+</div>
+<div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
+&copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>
+</div>
+</div>
+</body>
+</html>

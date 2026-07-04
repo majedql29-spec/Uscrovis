@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="description" content="Free Python cheatsheet PDF — syntax, data types, functions, loops, OOP, and more. Downloadable Python cheat sheet for beginners and intermediate programmers.">
+<meta name="keywords" content="python cheatsheet, python cheat sheet, python syntax, python programming, learn python, python reference, python pdf">
+<link rel="canonical" href="https://majedql29-spec.github.io/JometCode/cheatsheet.html">
+<link rel="stylesheet" href="/design.css">
+<meta property="og:title" content="Python Cheatsheet — Free Reference for Beginners & Pros | JometCode">
+<meta property="og:description" content="Complete Python cheatsheet covering syntax, data types, functions, loops, OOP, modules, and more. Free reference for Python programmers.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://majedql29-spec.github.io/JometCode/cheatsheet.html">
+<meta property="og:site_name" content="JometCode">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Python Cheatsheet — Free Reference for Beginners & Pros | JometCode">
+<meta name="twitter:description" content="Complete Python cheatsheet covering syntax, data types, functions, loops, OOP, modules, and more.">
+<title>Python Cheatsheet — Free Syntax Reference for Beginners | JometCode</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; background: #0b0b10; color: #e8e8ee; line-height: 1.7; }
+.container { max-width: 860px; margin: 0 auto; padding: 32px 20px; }
+h1 { font-family: ui-monospace, 'SF Mono', 'Fira Code', monospace; font-size: 28px; margin-bottom: 4px; color: #e8e8ee; }
+h1 span { color: #f97316; }
+.subtitle { color: #5a5a6a; font-size: 14px; margin-bottom: 32px; border-bottom: 1px solid #22222e; padding-bottom: 16px; }
+h2 { font-size: 20px; color: #f97316; margin: 36px 0 12px; padding-bottom: 6px; border-bottom: 1px solid #22222e; font-family: ui-monospace, 'SF Mono', 'Fira Code', monospace; }
+h3 { font-size: 16px; color: #e8e8ee; margin: 20px 0 8px; }
+code { background: #16161e; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, 'SF Mono', 'Fira Code', monospace; font-size: 13px; color: #f97316; }
+pre { background: #16161e; border: 1px solid #22222e; border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 8px 0; font-family: ui-monospace, 'SF Mono', 'Fira Code', monospace; font-size: 13px; color: #d1d5e0; line-height: 1.5; }
+pre .kw { color: #c586c0; }
+pre .fn { color: #dcdcaa; }
+pre .str { color: #ce9178; }
+pre .cm { color: #6a9955; font-style: italic; }
+pre .num { color: #b5cea8; }
+pre .op { color: #d4d4d4; }
+pre .bu { color: #dcdcaa; }
+pre .va { color: #9cdcfe; }
+pre .tp { color: #569cd6; }
+p { margin: 8px 0; color: #d1d5e0; font-size: 14px; }
+ul { margin: 6px 0 6px 20px; color: #d1d5e0; font-size: 14px; }
+li { margin: 4px 0; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+th, td { text-align: left; padding: 8px 12px; border: 1px solid #22222e; }
+th { background: #16161e; color: #f97316; font-weight: 600; font-family: ui-monospace, 'SF Mono', 'Fira Code', monospace; }
+td { color: #d1d5e0; }
+tr:hover td { background: #121216; }
+.section-links { background: #121216; border: 1px solid #22222e; border-radius: 8px; padding: 16px 20px; margin: 20px 0; }
+.section-links a { color: #f97316; text-decoration: none; font-size: 13px; }
+.section-links a:hover { text-decoration: underline; }
+.section-links .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 6px; margin-top: 8px; }
+.badge { display: inline-block; background: rgba(249,115,22,0.12); color: #f97316; font-size: 11px; padding: 1px 8px; border-radius: 10px; font-weight: 600; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: #5a5a6a; font-size: 13px; text-decoration: none; margin-bottom: 20px; }
+.back-link:hover { color: #f97316; }
+.cta { text-align: center; margin: 40px 0 20px; padding: 24px; background: #121216; border: 1px solid #22222e; border-radius: 12px; }
+.cta a { display: inline-block; background: #f97316; color: #fff; padding: 10px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+.cta a:hover { background: #ea580c; }
+.cta p { margin-top: 8px; font-size: 12px; color: #5a5a6a; }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Python Cheatsheet — Free Syntax Reference","description":"Complete Python cheatsheet covering syntax, data types, functions, loops, OOP, modules, and more.","author":{"@type":"Organization","name":"JometCode"},"publisher":{"@type":"Organization","name":"JometCode","logo":{"@type":"ImageObject","url":"https://majedql29-spec.github.io/JometCode/logo.png"}},"dateModified":"2026-07-01","mainEntityOfPage":{"@type":"WebPage","@id":"https://majedql29-spec.github.io/JometCode/cheatsheet.html"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://majedql29-spec.github.io/JometCode"},{"@type":"ListItem","position":2,"name":"Python Cheatsheet","item":"https://majedql29-spec.github.io/JometCode/cheatsheet.html"}]}
+</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e580f92e-6fd0-405b-bce3-f8d667558732"></script>
+</head>
+<body>
+<div class="container">
+<a href="/" class="back-link">&larr; Back to JometCode</a>
+<h1>Python <span>Cheatsheet</span></h1>
+<p class="subtitle">Free quick-reference guide for Python 3 — syntax, types, control flow, functions, OOP, and more.</p>
+
+<div class="section-links">
+<strong style="font-size:13px;color:#5a5a6a;">Jump to:</strong>
+<div class="grid">
+<a href="#basics">Basics & Variables</a>
+<a href="#strings">Strings</a>
+<a href="#lists">Lists & Tuples</a>
+<a href="#dicts">Dictionaries & Sets</a>
+<a href="#control">Control Flow</a>
+<a href="#functions">Functions</a>
+<a href="#oop">Classes & OOP</a>
+<a href="#modules">Modules</a>
+<a href="#errors">Error Handling</a>
+<a href="#comprehensions">Comprehensions</a>
+<a href="#fileio">File I/O</a>
+<a href="#json">JSON</a>
+<a href="#builtins">Useful Built-ins</a>
+</div>
+</div>
+
+<h2 id="basics">Basics & Variables</h2>
+<pre><span class="kw">print</span>(<span class="str">"Hello, World!"</span>)
+<span class="va">name</span> = <span class="str">"JometCode"</span>
+<span class="va">age</span> = <span class="num">2</span>
+<span class="va">pi</span> = <span class="num">3.14</span>
+<span class="va">is_active</span> = <span class="kw">True</span>
+<span class="va">nothing</span> = <span class="kw">None</span>
+<span class="cm"># Dynamic typing — type changes freely</span>
+<span class="va">x</span> = <span class="num">5</span>    <span class="cm"># int</span>
+<span class="va">x</span> = <span class="str">"hi"</span>  <span class="cm"># now str</span>
+<span class="cm"># Multiple assignment</span>
+<span class="va">a</span>, <span class="va">b</span>, <span class="va">c</span> = <span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>
+<span class="cm"># Type checking</span>
+<span class="kw">print</span>(<span class="kw">type</span>(<span class="va">age</span>))  <span class="cm"># &lt;class 'int'&gt;</span></pre>
+
+<h2 id="strings">Strings</h2>
+<pre><span class="va">s</span> = <span class="str">"Python"</span>
+<span class="va">s2</span> = <span class="str">'Python'</span>  <span class="cm"># single quotes work too</span>
+<span class="va">msg</span> = <span class="str">f"Hello {s}"</span>           <span class="cm"># f-string (Python 3.6+)</span>
+<span class="va">msg2</span> = <span class="str">f"Sum: {2 + 3}"</span>        <span class="cm"># expressions inside</span>
+<span class="va">upper</span> = <span class="va">s</span>.<span class="kw">upper</span>()              <span class="cm"># "PYTHON"</span>
+<span class="va">lower</span> = <span class="va">s</span>.<span class="kw">lower</span>()              <span class="cm"># "python"</span>
+<span class="va">stripped</span> = <span class="str">"  hi  "</span>.<span class="kw">strip</span>()     <span class="cm"># "hi"</span>
+<span class="va">words</span> = <span class="str">"a,b,c"</span>.<span class="kw">split</span>(<span class="str">","</span>)    <span class="cm"># ["a", "b", "c"]</span>
+<span class="va">joined</span> = <span class="str">", "</span>.<span class="kw">join</span>(<span class="va">words</span>)     <span class="cm"># "a, b, c"</span>
+<span class="va">replaced</span> = <span class="va">s</span>.<span class="kw">replace</span>(<span class="str">"Py"</span>, <span class="str">"Ji"</span>) <span class="cm"># "Jithon"</span>
+<span class="va">length</span> = <span class="kw">len</span>(<span class="va">s</span>)                 <span class="cm"># 6</span>
+<span class="va">is_in</span> = <span class="str">"th"</span> <span class="kw">in</span> <span class="va">s</span>               <span class="cm"># True</span></pre>
+
+<h2 id="lists">Lists & Tuples</h2>
+<pre><span class="cm"># Lists (mutable)</span>
+<span class="va">nums</span> = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>]
+<span class="va">nums</span>.<span class="kw">append</span>(<span class="num">6</span>)       <span class="cm"># [1,2,3,4,5,6]</span>
+<span class="va">nums</span>.<span class="kw">insert</span>(<span class="num">0</span>, <span class="num">0</span>)    <span class="cm"># [0,1,2,3,4,5,6]</span>
+<span class="va">nums</span>.<span class="kw">pop</span>()            <span class="cm"># removes & returns last</span>
+<span class="va">nums</span>.<span class="kw">sort</span>()           <span class="cm"># in-place sort</span>
+<span class="va">nums</span>.<span class="kw">reverse</span>()        <span class="cm"># in-place reverse</span>
+<span class="va">sliced</span> = <span class="va">nums</span>[<span class="num">1</span>:<span class="num">3</span>]     <span class="cm"># [2,3] (end exclusive)</span>
+<span class="va">sliced</span> = <span class="va">nums</span>[:<span class="num">3</span>]      <span class="cm"># [1,2,3]</span>
+<span class="va">sliced</span> = <span class="va">nums</span>[::<span class="num">2</span>]     <span class="cm"># [1,3,5] (step)</span>
+<span class="cm"># Tuples (immutable)</span>
+<span class="va">point</span> = (<span class="num">3</span>, <span class="num">4</span>)
+<span class="va">x</span>, <span class="va">y</span> = <span class="va">point</span>          <span class="cm"># unpacking</span></pre>
+
+<h2 id="dicts">Dictionaries & Sets</h2>
+<pre><span class="cm"># Dict (key-value pairs)</span>
+<span class="va">user</span> = {<span class="str">"name"</span>: <span class="str">"Alice"</span>, <span class="str">"age"</span>: <span class="num">30</span>}
+<span class="va">user</span>[<span class="str">"email"</span>] = <span class="str">"a@b.com"</span>   <span class="cm"># add key</span>
+<span class="va">name</span> = <span class="va">user</span>.<span class="kw">get</span>(<span class="str">"name"</span>, <span class="str">"default"</span>)
+<span class="kw">for</span> <span class="va">k</span>, <span class="va">v</span> <span class="kw">in</span> <span class="va">user</span>.<span class="kw">items</span>(): <span class="kw">print</span>(<span class="va">k</span>, <span class="va">v</span>)
+<span class="va">keys</span> = <span class="va">user</span>.<span class="kw">keys</span>()          <span class="cm"># view of keys</span>
+<span class="va">vals</span> = <span class="va">user</span>.<span class="kw">values</span>()        <span class="cm"># view of values</span>
+<span class="cm"># Set (unique, unordered)</span>
+<span class="va">a</span> = {<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>}
+<span class="va">b</span> = {<span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>}
+<span class="va">a</span> | <span class="va">b</span>  <span class="cm"># union: {1,2,3,4,5}</span>
+<span class="va">a</span> &amp; <span class="va">b</span>  <span class="cm"># intersection: {3}</span>
+<span class="va">a</span> - <span class="va">b</span>  <span class="cm"># difference: {1,2}</span></pre>
+
+<h2 id="control">Control Flow</h2>
+<pre><span class="cm"># If / Elif / Else</span>
+<span class="kw">if</span> <span class="va">age</span> &gt;= <span class="num">18</span>:
+    <span class="kw">print</span>(<span class="str">"Adult"</span>)
+<span class="kw">elif</span> <span class="va">age</span> &gt;= <span class="num">13</span>:
+    <span class="kw">print</span>(<span class="str">"Teen"</span>)
+<span class="kw">else</span>:
+    <span class="kw">print</span>(<span class="str">"Child"</span>)
+
+<span class="cm"># Ternary</span>
+<span class="va">status</span> = <span class="str">"Adult"</span> <span class="kw">if</span> <span class="va">age</span> &gt;= <span class="num">18</span> <span class="kw">else</span> <span class="str">"Minor"</span>
+
+<span class="cm"># For loop</span>
+<span class="kw">for</span> <span class="va">i</span> <span class="kw">in</span> <span class="kw">range</span>(<span class="num">5</span>):        <span class="cm"># 0 to 4</span>
+    <span class="kw">print</span>(<span class="va">i</span>)
+
+<span class="kw">for</span> <span class="va">i</span>, <span class="va">item</span> <span class="kw">in</span> <span class="kw">enumerate</span>(<span class="va">items</span>):  <span class="cm"># with index</span>
+    <span class="kw">print</span>(<span class="va">i</span>, <span class="va">item</span>)
+
+<span class="cm"># While loop</span>
+<span class="kw">while</span> <span class="va">count</span> &lt; <span class="num">10</span>:
+    <span class="va">count</span> += <span class="num">1</span>
+
+<span class="cm"># Break / Continue</span>
+<span class="kw">for</span> <span class="va">x</span> <span class="kw">in</span> <span class="va">nums</span>:
+    <span class="kw">if</span> <span class="va">x</span> == <span class="num">0</span>: <span class="kw">continue</span>  <span class="cm"># skip</span>
+    <span class="kw">if</span> <span class="va">x</span> &lt; <span class="num">0</span>: <span class="kw">break</span>     <span class="cm"># exit loop</span></pre>
+
+<h2 id="functions">Functions</h2>
+<pre><span class="kw">def</span> <span class="fn">greet</span>(<span class="va">name</span>, <span class="va">greeting</span>=<span class="str">"Hello"</span>):
+    <span class="str">"""Return a greeting."""</span>
+    <span class="kw">return</span> <span class="str">f"{greeting}, {name}!"</span>
+
+<span class="cm"># args / kwargs</span>
+<span class="kw">def</span> <span class="fn">log</span>(*<span class="va">args</span>, **<span class="va">kwargs</span>):
+    <span class="kw">print</span>(<span class="va">args</span>, <span class="va">kwargs</span>)
+
+<span class="cm"># Lambda (anonymous)</span>
+<span class="va">square</span> = <span class="kw">lambda</span> <span class="va">x</span>: <span class="va">x</span>**<span class="num">2</span>
+<span class="va">sorted</span>(<span class="va">items</span>, <span class="va">key</span>=<span class="kw">lambda</span> <span class="va">i</span>: <span class="va">i</span>[<span class="str">"name"</span>])
+
+<span class="cm"># Type hints (Python 3.5+)</span>
+<span class="kw">def</span> <span class="fn">add</span>(<span class="va">a</span>: <span class="tb">int</span>, <span class="va">b</span>: <span class="tb">int</span>) -&gt; <span class="tb">int</span>:
+    <span class="kw">return</span> <span class="va">a</span> + <span class="va">b</span></pre>
+
+<h2 id="oop">Classes & OOP</h2>
+<pre><span class="kw">class</span> <span class="fn">Dog</span>:
+    <span class="va">species</span> = <span class="str">"Canis familiaris"</span>  <span class="cm"># class variable</span>
+
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="va">self</span>, <span class="va">name</span>):
+        <span class="va">self</span>.<span class="va">name</span> = <span class="va">name</span>            <span class="cm"># instance variable</span>
+
+    <span class="kw">def</span> <span class="fn">bark</span>(<span class="va">self</span>):
+        <span class="kw">return</span> <span class="str">f"{self.name} says woof!"</span>
+
+    <span class="kw">@classmethod</span>
+    <span class="kw">def</span> <span class="fn">from_birth</span>(<span class="va">cls</span>, <span class="va">year</span>): ...
+
+    <span class="kw">@staticmethod</span>
+    <span class="kw">def</span> <span class="fn">info</span>():
+        <span class="kw">return</span> <span class="str">"Dogs are mammals."</span>
+
+    <span class="kw">@property</span>
+    <span class="kw">def</span> <span class="fn">name_upper</span>(<span class="va">self</span>):
+        <span class="kw">return</span> <span class="va">self</span>.<span class="va">name</span>.<span class="kw">upper</span>()
+
+<span class="cm"># Inheritance</span>
+<span class="kw">class</span> <span class="fn">Puppy</span>(<span class="va">Dog</span>):
+    <span class="kw">def</span> <span class="fn">bark</span>(<span class="va">self</span>):
+        <span class="kw">return</span> <span class="str">"yip!"</span>              <span class="cm"># override</span></pre>
+
+<h2 id="modules">Modules & Imports</h2>
+<pre><span class="kw">import</span> <span class="va">math</span>
+<span class="kw">from</span> <span class="va">datetime</span> <span class="kw">import</span> <span class="va">datetime</span>
+<span class="kw">import</span> <span class="va">json</span> <span class="kw">as</span> <span class="va">js</span>             <span class="cm"># alias</span>
+<span class="kw">from</span> <span class="va">collections</span> <span class="kw">import</span> <span class="va">Counter</span>, <span class="va">defaultdict</span>
+
+<span class="cm"># Module guard</span>
+<span class="kw">if</span> <span class="va">__name__</span> == <span class="str">"__main__"</span>:
+    <span class="kw">print</span>(<span class="str">"Run directly"</span>)</pre>
+
+<h2 id="errors">Error Handling</h2>
+<pre><span class="kw">try</span>:
+    <span class="va">n</span> = <span class="kw">int</span>(<span class="kw">input</span>(<span class="str">"Number: "</span>))
+    <span class="kw">print</span>(<span class="num">10</span> / <span class="va">n</span>)
+<span class="kw">except</span> <span class="va">ValueError</span>:
+    <span class="kw">print</span>(<span class="str">"Not a number"</span>)
+<span class="kw">except</span> <span class="va">ZeroDivisionError</span> <span class="kw">as</span> <span class="va">e</span>:
+    <span class="kw">print</span>(<span class="va">e</span>)
+<span class="kw">else</span>:
+    <span class="kw">print</span>(<span class="str">"Success!"</span>)        <span class="cm"># runs if no error</span>
+<span class="kw">finally</span>:
+    <span class="kw">print</span>(<span class="str">"Always runs"</span>)    <span class="cm"># cleanup</span>
+
+<span class="cm"># Raise custom</span>
+<span class="kw">raise</span> <span class="va">ValueError</span>(<span class="str">"Invalid input"</span>)</pre>
+
+<h2 id="comprehensions">Comprehensions</h2>
+<pre><span class="cm"># List comprehension</span>
+<span class="va">squares</span> = [<span class="va">x</span>**<span class="num">2</span> <span class="kw">for</span> <span class="va">x</span> <span class="kw">in</span> <span class="kw">range</span>(<span class="num">10</span>)]
+<span class="va">evens</span> = [<span class="va">x</span> <span class="kw">for</span> <span class="va">x</span> <span class="kw">in</span> <span class="va">nums</span> <span class="kw">if</span> <span class="va">x</span> % <span class="num">2</span> == <span class="num">0</span>]
+
+<span class="cm"># Dict comprehension</span>
+<span class="va">squares_dict</span> = {<span class="va">x</span>: <span class="va">x</span>**<span class="num">2</span> <span class="kw">for</span> <span class="va">x</span> <span class="kw">in</span> <span class="kw">range</span>(<span class="num">5</span>)}
+
+<span class="cm"># Set comprehension</span>
+<span class="va">unique</span> = {<span class="kw">len</span>(<span class="va">w</span>) <span class="kw">for</span> <span class="va">w</span> <span class="kw">in</span> [<span class="str">"hi"</span>, <span class="str">"hello"</span>, <span class="str">"ok"</span>]}
+
+<span class="cm"># Nested comprehension (flatten)</span>
+<span class="va">flat</span> = [<span class="va">item</span> <span class="kw">for</span> <span class="va">row</span> <span class="kw">in</span> <span class="va">matrix</span> <span class="kw">for</span> <span class="va">item</span> <span class="kw">in</span> <span class="va">row</span>]</pre>
+
+<h2 id="fileio">File I/O</h2>
+<pre><span class="cm"># Writing</span>
+<span class="kw">with</span> <span class="kw">open</span>(<span class="str">"file.txt"</span>, <span class="str">"w"</span>, <span class="va">encoding</span>=<span class="str">"utf-8"</span>) <span class="kw">as</span> <span class="va">f</span>:
+    <span class="va">f</span>.<span class="kw">write</span>(<span class="str">"Hello!"</span>)
+
+<span class="cm"># Reading</span>
+<span class="kw">with</span> <span class="kw">open</span>(<span class="str">"file.txt"</span>, <span class="str">"r"</span>, <span class="va">encoding</span>=<span class="str">"utf-8"</span>) <span class="kw">as</span> <span class="va">f</span>:
+    <span class="va">content</span> = <span class="va">f</span>.<span class="kw">read</span>()          <span class="cm"># entire file</span>
+    <span class="kw">for</span> <span class="va">line</span> <span class="kw">in</span> <span class="va">f</span>:              <span class="cm"># line by line</span>
+        <span class="kw">print</span>(<span class="va">line</span>)
+
+<span class="cm"># Modes: "r" read, "w" write, "a" append, "x" exclusive</span>
+<span class="cm"># Add "b" for binary: "rb", "wb"</span>
+
+<span class="cm"># Using pathlib (modern)</span>
+<span class="kw">from</span> <span class="va">pathlib</span> <span class="kw">import</span> <span class="va">Path</span>
+<span class="va">Path</span>(<span class="str">"file.txt"</span>).<span class="kw">read_text</span>(<span class="va">encoding</span>=<span class="str">"utf-8"</span>)</pre>
+
+<h2 id="json">JSON</h2>
+<pre><span class="kw">import</span> <span class="va">json</span>
+
+<span class="cm"># Python to JSON string</span>
+<span class="va">data</span> = {<span class="str">"name"</span>: <span class="str">"Alice"</span>, <span class="str">"scores"</span>: [<span class="num">90</span>, <span class="num">85</span>, <span class="num">88</span>]}
+<span class="va">json_str</span> = <span class="va">json</span>.<span class="kw">dumps</span>(<span class="va">data</span>, <span class="va">indent</span>=<span class="num">2</span>)
+
+<span class="cm"># JSON string to Python</span>
+<span class="va">parsed</span> = <span class="va">json</span>.<span class="kw">loads</span>(<span class="va">json_str</span>)
+
+<span class="cm"># File I/O</span>
+<span class="kw">with</span> <span class="kw">open</span>(<span class="str">"data.json"</span>, <span class="str">"w"</span>) <span class="kw">as</span> <span class="va">f</span>: <span class="va">json</span>.<span class="kw">dump</span>(<span class="va">data</span>, <span class="va">f</span>)
+<span class="kw">with</span> <span class="kw">open</span>(<span class="str">"data.json"</span>) <span class="kw">as</span> <span class="va">f</span>: <span class="va">data</span> = <span class="va">json</span>.<span class="kw">load</span>(<span class="va">f</span>)</pre>
+
+<h2 id="builtins">Useful Built-in Functions</h2>
+<pre><span class="kw">print</span>(<span class="kw">len</span>(<span class="va">items</span>))        <span class="cm"># length</span>
+<span class="kw">print</span>(<span class="kw">type</span>(<span class="va">value</span>))        <span class="cm"># type of value</span>
+<span class="kw">print</span>(<span class="kw">range</span>(<span class="num">10</span>))          <span class="cm"># 0..9</span>
+<span class="kw">print</span>(<span class="kw">int</span>(<span class="str">"42"</span>))          <span class="cm"># string to int</span>
+<span class="kw">print</span>(<span class="kw">float</span>(<span class="str">"3.14"</span>))      <span class="cm"># string to float</span>
+<span class="kw">print</span>(<span class="kw">str</span>(<span class="num">42</span>))            <span class="cm"># int to string</span>
+<span class="kw">print</span>(<span class="kw">list</span>(<span class="str">"abc"</span>))        <span class="cm"># ["a","b","c"]</span>
+<span class="kw">print</span>(<span class="kw">sum</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>]))     <span class="cm"># 6</span>
+<span class="kw">print</span>(<span class="kw">max</span>([<span class="num">1</span>, <span class="num">5</span>, <span class="num">3</span>]))     <span class="cm"># 5</span>
+<span class="kw">print</span>(<span class="kw">min</span>([<span class="num">1</span>, <span class="num">5</span>, <span class="num">3</span>]))     <span class="cm"># 1</span>
+<span class="kw">print</span>(<span class="kw">abs</span>(-<span class="num">5</span>))            <span class="cm"># 5</span>
+<span class="kw">print</span>(<span class="kw">round</span>(<span class="num">3.14159</span>, <span class="num">2</span>)) <span class="cm"># 3.14</span>
+<span class="kw">print</span>(<span class="kw">sorted</span>([<span class="num">3</span>, <span class="num">1</span>, <span class="num">2</span>]))  <span class="cm"># [1,2,3]</span>
+<span class="kw">print</span>(<span class="kw">enumerate</span>([<span class="str">"a"</span>,<span class="str">"b"</span>])) <span class="cm"># (idx,val) pairs</span>
+<span class="kw">print</span>(<span class="kw">zip</span>([<span class="num">1</span>,<span class="num">2</span>], [<span class="str">"a"</span>,<span class="str">"b"</span>])) <span class="cm"># pairs both lists</span></pre>
+
+<div class="cta">
+<a href="/learn.html">Try the Interactive Python Course &rarr;</a>
+<p>Practice each concept with 28 free interactive lessons and run code in your browser.</p>
+</div>
+
+<p style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:40px;">
+&copy; 2026 JometCode &mdash; Free Online Python IDE &amp; Learning Platform
+</p>
+</div>
+</body>
+</html>

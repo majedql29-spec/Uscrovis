@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="description" content="Python variables and data types explained &mdash; int, float, str, bool. Learn dynamic typing, naming rules, and the type() function in this free tutorial.">
+<meta name="keywords" content="python variables, data types python, int float str bool, dynamic typing python, learn python variables">
+<link rel="canonical" href="https://majedql29-spec.github.io/JometCode/lesson-02-variables.html">
+<link rel="stylesheet" href="/design.css">
+  <meta property="og:title" content="Python Variables & Data Types &mdash; Free Tutorial | JometCode">
+<meta property="og:description" content="Learn Python variables and data types: int, float, str, bool. Understand dynamic typing, naming conventions, and variable assignment.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://majedql29-spec.github.io/JometCode/lesson-02-variables.html">
+<meta property="og:site_name" content="JometCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Variables & Data Types &mdash; Free Tutorial | JometCode">
+<meta name="twitter:description" content="Learn Python variables and data types with our free interactive tutorial.">
+<title>Python Variables & Data Types &mdash; Free Interactive Tutorial | JometCode</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://majedql29-spec.github.io/JometCode"},{"@type":"ListItem","position":2,"name":"Learn Python","item":"https://majedql29-spec.github.io/JometCode/learn.html"},{"@type":"ListItem","position":3,"name":"Variables & Data Types","item":"https://majedql29-spec.github.io/JometCode/lesson-02-variables.html"}]}</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b10; color: #e8e8ee; line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+h1 { font-size: 26px; margin-bottom: 4px; color: #f97316; font-family: ui-monospace, 'SF Mono', monospace; }
+.meta { color: #5a5a6a; font-size: 13px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #22222e; display: flex; gap: 16px; }
+.meta span { display: flex; align-items: center; gap: 4px; }
+.meta .badge { display: inline-block; background: rgba(249,115,22,0.12); color: #f97316; font-size: 11px; padding: 1px 10px; border-radius: 10px; font-weight: 600; }
+h2 { font-size: 18px; color: #e8e8ee; margin: 24px 0 10px; }
+p { margin: 10px 0; color: #d1d5e0; font-size: 14px; }
+code { background: #16161e; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #f97316; }
+pre { background: #16161e; border: 1px solid #22222e; border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 12px 0; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #d1d5e0; line-height: 1.5; }
+pre .kw { color: #c586c0; } pre .fn { color: #dcdcaa; } pre .str { color: #ce9178; } pre .cm { color: #6a9955; font-style: italic; } pre .num { color: #b5cea8; } pre .op { color: #d4d4d4; }
+ul { margin: 8px 0 8px 20px; color: #d1d5e0; font-size: 14px; }
+li { margin: 4px 0; }
+.tip { background: rgba(249,115,22,0.06); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13px; color: #d1d5e0; }
+.nav-links { display: flex; justify-content: space-between; margin-top: 32px; padding-top: 16px; border-top: 1px solid #22222e; }
+.nav-links a { color: #f97316; text-decoration: none; font-size: 14px; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links .next { text-align: right; }
+.cta { text-align: center; margin: 32px 0; padding: 20px; background: #121216; border: 1px solid #22222e; border-radius: 10px; }
+.cta a { display: inline-block; background: #f97316; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+.cta a:hover { background: #ea580c; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: #5a5a6a; font-size: 13px; text-decoration: none; margin-bottom: 20px; }
+.back-link:hover { color: #f97316; }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e580f92e-6fd0-405b-bce3-f8d667558732"></script>
+</head>
+<body>
+<div class="container">
+<a href="/learn.html" class="back-link">&larr; Back to Course</a>
+<h1>Lesson 02: Variables &amp; Data Types</h1>
+<div class="meta"><span class="badge">Beginner</span><span>&#9200; 8 min</span></div>
+
+<p>Variables are named containers that store data in your program's memory. Think of them as labeled boxes &mdash; you put a value inside, give it a descriptive name, and later retrieve that value by using the name. In Python, you create a variable simply by assigning a value with the <code>=</code> sign. No type declaration is needed &mdash; Python infers the type automatically from the value you assign.</p>
+
+<p>Python's fundamental data types form the building blocks of every program:</p>
+
+<ul>
+<li><strong>int</strong> &mdash; whole numbers: <code>42</code>, <code>-7</code>, <code>0</code>, <code>1_000_000</code> (underscores can separate digits for readability)</li>
+<li><strong>float</strong> &mdash; decimal numbers: <code>3.14</code>, <code>-0.5</code>, <code>2.0</code>, <code>1.5e10</code> (scientific notation)</li>
+<li><strong>str</strong> &mdash; text strings: <code>"hello"</code>, <code>'Python'</code>, <code>"42"</code> (even digits inside quotes become text)</li>
+<li><strong>bool</strong> &mdash; logical values: <code>True</code> or <code>False</code> (note the capital letters &mdash; Python is case-sensitive)</li>
+</ul>
+
+<p>Python is <strong>dynamically typed</strong>, which means a variable can change type during execution. A variable that starts as an integer can later hold a string without any special syntax. This flexibility makes Python fast to write, but it also means you need to be mindful of what type a variable holds at any given moment. Use the built-in <code>type()</code> function to inspect the type: <code>type(42)</code> returns <code>&lt;class 'int'&gt;</code>.</p>
+
+<p>You can also assign the same value to multiple variables in one line: <code>x = y = z = 0</code>. Or swap two variables without a temporary variable: <code>a, b = b, a</code> &mdash; Python handles this gracefully using tuple unpacking.</p>
+
+<h2>Common mistake to avoid</h2>
+<p>Confusing <code>=</code> (assignment) with <code>==</code> (comparison). Writing <code>if x = 5</code> will cause a syntax error. Always use double equals when checking equality.</p>
+
+<pre><span class="op">name</span> <span class="op">=</span> <span class="str">"JometCode"</span>
+<span class="op">age</span> <span class="op">=</span> <span class="num">2</span>
+<span class="op">pi</span> <span class="op">=</span> <span class="num">3.14</span>
+<span class="op">is_fun</span> <span class="op">=</span> <span class="kw">True</span>
+<span class="kw">print</span>(<span class="str">f"Welcome to {name}, age {age}, pi = {pi}, is it fun? {is_fun}"</span>)</pre>
+
+<div class="tip"><strong>Naming rules:</strong> Variable names must start with a letter or underscore, contain only letters, digits, and underscores, and are case-sensitive (<code>score</code> and <code>Score</code> are different). Descriptive names like <code>user_age</code> or <code>total_price</code> make your code much easier to read than short names like <code>x</code> or <code>y</code>.</div>
+
+<div class="cta">
+<a href="/learn.html#lesson-1">Open Interactive Lesson &rarr;</a>
+<p>Run this code directly in your browser with our free Python IDE.</p>
+</div>
+
+<div class="nav-links">
+<a href="/lesson-01-hello-world.html">&larr; Lesson 01: Hello World</a>
+<a href="/lesson-03-strings-formatting.html" class="next">Lesson 03: Strings &amp; Formatting &rarr;</a>
+</div>
+<div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
+&copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="description" content="Python functions tutorial &mdash; learn def, parameters, return values, default arguments, keyword arguments, and best practices for writing clean functions.">
+<meta name="keywords" content="python functions, def keyword, return statement, function parameters, python best practices, learn python functions">
+<link rel="canonical" href="https://majedql29-spec.github.io/JometCode/lesson-06-functions.html">
+<link rel="stylesheet" href="/design.css">
+  <meta property="og:title" content="Python Functions &mdash; Free Tutorial | JometCode">
+<meta property="og:description" content="Learn Python functions: def, parameters, return values, default and keyword arguments, docstrings, and best practices for reusable code.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://majedql29-spec.github.io/JometCode/lesson-06-functions.html">
+<meta property="og:site_name" content="JometCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Functions &mdash; Free Tutorial | JometCode">
+<meta name="twitter:description" content="Learn Python functions with our free interactive tutorial.">
+<title>Python Functions &mdash; Free Interactive Tutorial | JometCode</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://majedql29-spec.github.io/JometCode"},{"@type":"ListItem","position":2,"name":"Learn Python","item":"https://majedql29-spec.github.io/JometCode/learn.html"},{"@type":"ListItem","position":3,"name":"Functions","item":"https://majedql29-spec.github.io/JometCode/lesson-06-functions.html"}]}</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b10; color: #e8e8ee; line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+h1 { font-size: 26px; margin-bottom: 4px; color: #f97316; font-family: ui-monospace, 'SF Mono', monospace; }
+.meta { color: #5a5a6a; font-size: 13px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #22222e; display: flex; gap: 16px; }
+.meta span { display: flex; align-items: center; gap: 4px; }
+.meta .badge { display: inline-block; background: rgba(249,115,22,0.12); color: #f97316; font-size: 11px; padding: 1px 10px; border-radius: 10px; font-weight: 600; }
+h2 { font-size: 18px; color: #e8e8ee; margin: 24px 0 10px; }
+p { margin: 10px 0; color: #d1d5e0; font-size: 14px; }
+code { background: #16161e; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #f97316; }
+pre { background: #16161e; border: 1px solid #22222e; border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 12px 0; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #d1d5e0; line-height: 1.5; }
+pre .kw { color: #c586c0; } pre .fn { color: #dcdcaa; } pre .str { color: #ce9178; } pre .cm { color: #6a9955; font-style: italic; } pre .num { color: #b5cea8; } pre .op { color: #d4d4d4; }
+ul { margin: 8px 0 8px 20px; color: #d1d5e0; font-size: 14px; }
+li { margin: 4px 0; }
+.tip { background: rgba(249,115,22,0.06); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13px; color: #d1d5e0; }
+.nav-links { display: flex; justify-content: space-between; margin-top: 32px; padding-top: 16px; border-top: 1px solid #22222e; }
+.nav-links a { color: #f97316; text-decoration: none; font-size: 14px; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links .next { text-align: right; }
+.cta { text-align: center; margin: 32px 0; padding: 20px; background: #121216; border: 1px solid #22222e; border-radius: 10px; }
+.cta a { display: inline-block; background: #f97316; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+.cta a:hover { background: #ea580c; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: #5a5a6a; font-size: 13px; text-decoration: none; margin-bottom: 20px; }
+.back-link:hover { color: #f97316; }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e580f92e-6fd0-405b-bce3-f8d667558732"></script>
+</head>
+<body>
+<div class="container">
+<a href="/learn.html" class="back-link">&larr; Back to Course</a>
+<h1>Lesson 06: Functions</h1>
+<div class="meta"><span class="badge">Beginner</span><span>&#9200; 10 min</span></div>
+
+<p>Functions are reusable blocks of code that perform a specific task. They are the primary mechanism for organizing code, avoiding repetition (following the DRY principle &mdash; Don't Repeat Yourself), and making programs easier to read, test, and maintain. Think of a function as a mini-program within your program: it takes inputs, does work, and optionally produces an output.</p>
+
+<p>Define a function with the <strong><code>def</code></strong> keyword, followed by the function name, parentheses that may contain parameters, and a colon. The function body is indented by one level (typically 4 spaces):</p>
+
+<p><code>def greet(name):<br>&nbsp;&nbsp;&nbsp;&nbsp;"""Return a personalized greeting."""<br>&nbsp;&nbsp;&nbsp;&nbsp;return f"Hello, {name}!"</code></p>
+
+<p>Functions can accept <strong>parameters</strong> (also called arguments) that serve as inputs. They can <strong>return</strong> a value using the <code>return</code> keyword. The <code>return</code> statement immediately exits the function and sends the specified value back to the caller. If a function does not have a <code>return</code> statement, it implicitly returns <code>None</code> (Python's null value).</p>
+
+<p>Once defined, you <strong>call</strong> a function by its name followed by parentheses containing any required arguments: <code>message = greet("JometCode")</code>. The returned value can be stored in a variable, printed, or used in an expression.</p>
+
+<h2>Parameter features to know</h2>
+
+<ul>
+<li><strong>Default parameters:</strong> You can assign default values: <code>def greet(name, greeting="Hello"):</code> &mdash; if the caller omits <code>greeting</code>, it defaults to <code>"Hello"</code></li>
+<li><strong>Keyword arguments:</strong> Call functions by naming arguments: <code>greet(name="JometCode", greeting="Hi")</code> &mdash; order doesn't matter with keyword arguments</li>
+<li><strong>Variable-length arguments:</strong> Use <code>*args</code> for any number of positional arguments and <code>**kwargs</code> for any number of keyword arguments</li>
+</ul>
+
+<h2>Best practices for writing good functions</h2>
+
+<ul>
+<li>Give functions descriptive names that explain what they do &mdash; <code>calculate_average()</code> is better than <code>calc()</code></li>
+<li>Each function should do exactly one thing and do it well (Single Responsibility Principle)</li>
+<li>Keep functions short &mdash; if a function exceeds 20-30 lines, consider breaking it into smaller functions</li>
+<li>Add a <strong>docstring</strong> (triple-quoted string) right after the definition to document what the function does</li>
+</ul>
+
+<h2>Common mistake</h2>
+<p>Forgetting to call the function (missing parentheses). Writing <code>greet</code> without parentheses returns the function object itself, not the result. Always use <code>greet("name")</code> with parentheses to actually execute the function.</p>
+
+<pre><span class="kw">def</span> <span class="fn">greet</span>(<span class="op">name</span>):
+    <span class="kw">return</span> <span class="str">f"Hello, {name}!"</span>
+
+<span class="kw">def</span> <span class="fn">add</span>(<span class="op">a</span>, <span class="op">b</span>):
+    <span class="kw">return</span> <span class="op">a</span> <span class="op">+</span> <span class="op">b</span>
+
+<span class="kw">print</span>(<span class="fn">greet</span>(<span class="str">"JometCode"</span>))
+<span class="kw">print</span>(<span class="fn">add</span>(<span class="num">5</span>, <span class="num">3</span>))</pre>
+
+<div class="tip"><strong>Try it:</strong> Add a third function that takes three parameters and returns the average. Then call it and print the result. Experiment with default parameter values.</div>
+
+<div class="cta">
+<a href="/learn.html#lesson-5">Open Interactive Lesson &rarr;</a>
+<p>Run this code directly in your browser with our free Python IDE.</p>
+</div>
+
+<div class="nav-links">
+<a href="/lesson-05-conditions-if-else.html">&larr; Lesson 05: Conditions &amp; If/Else</a>
+<a href="/lesson-07-basic-operators.html" class="next">Lesson 07: Basic Operators &rarr;</a>
+</div>
+<div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
+&copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>
+</div>
+</div>
+</body>
+</html>

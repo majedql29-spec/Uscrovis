@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="description" content="Python Type Conversion - learn implicit and explicit type conversion in Python. Convert between int, float, str, bool. Free interactive Python tutorial.">
+<meta name="keywords" content="python type conversion, type casting python, int float str bool python, implicit explicit conversion">
+<link rel="canonical" href="https://majedql29-spec.github.io/JometCode/lesson-09-type-conversion.html">
+<link rel="stylesheet" href="/design.css">
+  <meta property="og:title" content="Python Type Conversion — Casting Basics | JometCode">
+<meta property="og:description" content="Learn implicit and explicit type conversion in Python. Master int(), float(), str(), bool() and avoid common casting mistakes.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://majedql29-spec.github.io/JometCode/lesson-09-type-conversion.html">
+<meta property="og:site_name" content="JometCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Type Conversion — Casting Basics | JometCode">
+<meta name="twitter:description" content="Learn Python type conversion with our free interactive tutorial.">
+<title>Python Type Conversion — Free Interactive Python Tutorial | JometCode</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://majedql29-spec.github.io/JometCode"},{"@type":"ListItem","position":2,"name":"Learn Python","item":"https://majedql29-spec.github.io/JometCode/learn.html"},{"@type":"ListItem","position":3,"name":"Type Conversion","item":"https://majedql29-spec.github.io/JometCode/lesson-09-type-conversion.html"}]}</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b10; color: #e8e8ee; line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+h1 { font-size: 26px; margin-bottom: 4px; color: #f97316; font-family: ui-monospace, 'SF Mono', monospace; }
+.meta { color: #5a5a6a; font-size: 13px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #22222e; display: flex; gap: 16px; }
+.meta span { display: flex; align-items: center; gap: 4px; }
+.meta .badge { display: inline-block; background: rgba(249,115,22,0.12); color: #f97316; font-size: 11px; padding: 1px 10px; border-radius: 10px; font-weight: 600; }
+h2 { font-size: 18px; color: #e8e8ee; margin: 24px 0 10px; }
+p { margin: 10px 0; color: #d1d5e0; font-size: 14px; }
+code { background: #16161e; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #f97316; }
+pre { background: #16161e; border: 1px solid #22222e; border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 12px 0; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #d1d5e0; line-height: 1.5; }
+pre .kw { color: #c586c0; } pre .fn { color: #dcdcaa; } pre .str { color: #ce9178; } pre .cm { color: #6a9955; font-style: italic; } pre .num { color: #b5cea8; } pre .op { color: #d4d4d4; }
+ul { margin: 8px 0 8px 20px; color: #d1d5e0; font-size: 14px; }
+li { margin: 4px 0; }
+.tip { background: rgba(249,115,22,0.06); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13px; color: #d1d5e0; }
+.nav-links { display: flex; justify-content: space-between; margin-top: 32px; padding-top: 16px; border-top: 1px solid #22222e; }
+.nav-links a { color: #f97316; text-decoration: none; font-size: 14px; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links .next { text-align: right; }
+.cta { text-align: center; margin: 32px 0; padding: 20px; background: #121216; border: 1px solid #22222e; border-radius: 10px; }
+.cta a { display: inline-block; background: #f97316; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+.cta a:hover { background: #ea580c; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: #5a5a6a; font-size: 13px; text-decoration: none; margin-bottom: 20px; }
+.back-link:hover { color: #f97316; }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e580f92e-6fd0-405b-bce3-f8d667558732"></script>
+</head>
+<body>
+<div class="container">
+<a href="/learn.html" class="back-link">&larr; Back to Course</a>
+<h1>Lesson 09: Type Conversion</h1>
+<div class="meta"><span class="badge">Beginner</span><span>&#9200; 6 min</span></div>
+
+<p>Type conversion is the process of changing a value from one data type to another. Python supports both <strong>implicit</strong> (automatic) and <strong>explicit</strong> (manual) conversion. Understanding how and when conversion happens is essential for writing correct and predictable code.</p>
+<h2>Implicit conversion</h2>
+<p>happens automatically when Python knows the conversion is safe and will not lose data. For example, when you add an <code>int</code> and a <code>float</code>, Python automatically converts the <code>int</code> to a <code>float</code> before performing the addition. This is because floats can represent all integer values, but integers cannot represent fractional values — converting in the direction of greater precision avoids data loss. The same applies when dividing integers with <code>/</code>: the result is always a <code>float</code>.</p>
+<h2>Explicit conversion</h2>
+<p>(also called <strong>casting</strong>) is when you manually convert a value using built-in functions. This is necessary when Python cannot infer the correct type or when you need to enforce a specific type:</p>
+<ul>
+<li><code>int(value)</code> — converts to an integer. Works with floats (truncates the decimal part) and numeric strings. For floats, it truncates toward zero: <code>int(3.9)</code> gives <code>3</code>, <code>int(-2.7)</code> gives <code>-2</code>.</li>
+<li><code>float(value)</code> — converts to a float. Works with integers and numeric strings: <code>float("3.14")</code> gives <code>3.14</code>.</li>
+<li><code>str(value)</code> — converts any value to its string representation. Essential for concatenating non-string values with strings.</li>
+<li><code>bool(value)</code> — converts any value to a boolean. Values that convert to <code>False</code>: <code>0</code>, <code>0.0</code>, <code>""</code> (empty string), <code>[]</code> (empty list), <code>{}</code> (empty dict), <code>None</code>. Everything else is <code>True</code>.</li>
+<li><code>list()</code>, <code>tuple()</code>, <code>set()</code> — convert between collection types: <code>list("hello")</code> gives <code>["h", "e", "l", "l", "o"]</code>.</li>
+</ul>
+<h2>Practical example</h2>
+<p>When you use <code>input()</code> in Python, the result is always a <strong>string</strong>. If you ask for a number and then try to do math, you must explicitly convert: <code>age = int(input("Enter your age: "))</code>. Forgetting to convert is one of the most common beginner mistakes. Always convert user input to the appropriate type before using it in calculations.</p>
+<h2>Common mistake</h2>
+<p>Trying to convert a non-numeric string like <code>int("abc")</code> will raise a <code>ValueError</code>. Always validate your data before converting, or wrap the conversion in a try/except block to handle invalid input gracefully.</p>
+
+<pre><span class="cm"># Implicit conversion</span>
+x = <span class="num">5</span>
+y = <span class="num">2.5</span>
+<span class="kw">print</span>(x + y)
+
+<span class="cm"># Explicit conversion</span>
+num_str = <span class="str">"42"</span>
+num_int = <span class="kw">int</span>(num_str)
+num_float = <span class="kw">float</span>(num_str)
+<span class="kw">print</span>(num_int + <span class="num">8</span>)
+<span class="kw">print</span>(num_float + <span class="num">0.5</span>)
+
+<span class="cm"># To string</span>
+age = <span class="num">25</span>
+<span class="kw">print</span>(<span class="str">"I am "</span> + <span class="kw">str</span>(age) + <span class="str">" years old"</span>)</pre>
+
+<div class="tip"><strong>Try it:</strong> What happens when you convert <code>int(7.999)</code>? It gives <code>7</code>. Try converting a boolean: <code>int(True)</code> gives <code>1</code>, <code>int(False)</code> gives <code>0</code>. Then try <code>bool(0)</code> and <code>bool(42)</code> to see which values are truthy.</div>
+
+<div class="cta">
+<a href="/learn.html#lesson-0">Open Interactive Lesson &rarr;</a>
+<p>Run this code directly in your browser with our free Python IDE.</p>
+</div>
+
+<div class="nav-links">
+<a href="/lesson-08-string-methods.html">&larr; Lesson 08: String Methods</a>
+<a href="/lesson-10-sets-tuples.html" class="next">Lesson 10: Sets &amp; Tuples &rarr;</a>
+</div>
+<div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
+&copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>
+</div>
+</div>
+</body>
+</html>

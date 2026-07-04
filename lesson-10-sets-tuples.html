@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="description" content="Python Sets & Tuples - learn about immutable tuples and unordered sets with unique elements. Set operations union, intersection, difference. Free interactive Python tutorial.">
+<meta name="keywords" content="python sets tuples, tuple vs list python, set operations python, immutable python">
+<link rel="canonical" href="https://majedql29-spec.github.io/JometCode/lesson-10-sets-tuples.html">
+<link rel="stylesheet" href="/design.css">
+  <meta property="og:title" content="Python Sets & Tuples — Collections Deep Dive | JometCode">
+<meta property="og:description" content="Learn about Python tuples (immutable sequences) and sets (unique, unordered collections). Master set operations like union, intersection, and difference.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://majedql29-spec.github.io/JometCode/lesson-10-sets-tuples.html">
+<meta property="og:site_name" content="JometCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Sets & Tuples — Collections Deep Dive | JometCode">
+<meta name="twitter:description" content="Learn Python sets and tuples with our free interactive tutorial.">
+<title>Python Sets & Tuples — Free Interactive Python Tutorial | JometCode</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://majedql29-spec.github.io/JometCode"},{"@type":"ListItem","position":2,"name":"Learn Python","item":"https://majedql29-spec.github.io/JometCode/learn.html"},{"@type":"ListItem","position":3,"name":"Sets & Tuples","item":"https://majedql29-spec.github.io/JometCode/lesson-10-sets-tuples.html"}]}</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b10; color: #e8e8ee; line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+h1 { font-size: 26px; margin-bottom: 4px; color: #f97316; font-family: ui-monospace, 'SF Mono', monospace; }
+.meta { color: #5a5a6a; font-size: 13px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #22222e; display: flex; gap: 16px; }
+.meta span { display: flex; align-items: center; gap: 4px; }
+.meta .badge { display: inline-block; background: rgba(249,115,22,0.12); color: #f97316; font-size: 11px; padding: 1px 10px; border-radius: 10px; font-weight: 600; }
+h2 { font-size: 18px; color: #e8e8ee; margin: 24px 0 10px; }
+p { margin: 10px 0; color: #d1d5e0; font-size: 14px; }
+code { background: #16161e; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #f97316; }
+pre { background: #16161e; border: 1px solid #22222e; border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 12px 0; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #d1d5e0; line-height: 1.5; }
+pre .kw { color: #c586c0; } pre .fn { color: #dcdcaa; } pre .str { color: #ce9178; } pre .cm { color: #6a9955; font-style: italic; } pre .num { color: #b5cea8; } pre .op { color: #d4d4d4; }
+ul { margin: 8px 0 8px 20px; color: #d1d5e0; font-size: 14px; }
+li { margin: 4px 0; }
+.tip { background: rgba(249,115,22,0.06); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13px; color: #d1d5e0; }
+.nav-links { display: flex; justify-content: space-between; margin-top: 32px; padding-top: 16px; border-top: 1px solid #22222e; }
+.nav-links a { color: #f97316; text-decoration: none; font-size: 14px; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links .next { text-align: right; }
+.cta { text-align: center; margin: 32px 0; padding: 20px; background: #121216; border: 1px solid #22222e; border-radius: 10px; }
+.cta a { display: inline-block; background: #f97316; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+.cta a:hover { background: #ea580c; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: #5a5a6a; font-size: 13px; text-decoration: none; margin-bottom: 20px; }
+.back-link:hover { color: #f97316; }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e580f92e-6fd0-405b-bce3-f8d667558732"></script>
+</head>
+<body>
+<div class="container">
+<a href="/learn.html" class="back-link">&larr; Back to Course</a>
+<h1>Lesson 10: Sets &amp; Tuples</h1>
+<div class="meta"><span class="badge">Beginner</span><span>&#9200; 9 min</span></div>
+
+<p>Beyond lists, Python offers two more essential collection types: <strong>tuples</strong> and <strong>sets</strong>. Each has specific use cases that make them invaluable in different situations. Choosing the right collection type is a key skill in writing idiomatic Python.</p>
+<h2>Tuples</h2>
+<p>are ordered sequences just like lists, but with one critical difference — they are <strong>immutable</strong>. Once created, a tuple cannot be changed: you cannot add, remove, or replace elements. This immutability makes tuples useful for data that should remain constant throughout your program, such as geographic coordinates <code>(latitude, longitude)</code>, RGB color values <code>(255, 128, 0)</code>, or configuration settings that must not be accidentally modified. Tuples are created with parentheses: <code>point = (3, 4)</code>. You access elements by index just like lists: <code>point[0]</code> gives <code>3</code>. You can also <strong>unpack</strong> a tuple into individual variables: <code>x, y = point</code> assigns <code>3</code> to <code>x</code> and <code>4</code> to <code>y</code>. This unpacking feature is used extensively in Python for clean, readable code.</p>
+<p>Tuples are also <strong>hashable</strong> (if all their elements are hashable), which means they can be used as dictionary keys — something lists cannot do. For example, you can use a tuple as a key in a dictionary to store values by coordinates: <code>locations[(lat, lon)] = "Home"</code>.</p>
+<h2>Sets</h2>
+<p>are unordered collections of <strong>unique</strong> elements. The most important feature of a set is that duplicates are automatically removed. Sets are created with curly braces: <code>fruits = {"apple", "banana", "cherry", "apple"}</code> — the second <code>"apple"</code> is silently ignored. Because sets are unordered, you cannot access elements by index. However, this lack of ordering gives sets super-fast membership testing: checking if an element is in a set (<code>"apple" in fruits</code>) is much faster than checking a list, especially for large collections.</p>
+<h2>Set operations — mathematically powerful:</h2>
+<ul>
+<li><strong>Union</strong> (<code>|</code>) — combines elements from both sets, removing duplicates: <code>{1, 2} | {2, 3}</code> gives <code>{1, 2, 3}</code></li>
+<li><strong>Intersection</strong> (<code>&amp;</code>) — elements present in both sets: <code>{1, 2, 3} &amp; {2, 3, 4}</code> gives <code>{2, 3}</code></li>
+<li><strong>Difference</strong> (<code>-</code>) — elements in the first set but not in the second: <code>{1, 2, 3} - {2, 3}</code> gives <code>{1}</code></li>
+<li><strong>Symmetric difference</strong> (<code>^</code>) — elements in either set but not both: <code>{1, 2} ^ {2, 3}</code> gives <code>{1, 3}</code></li>
+</ul>
+<h2>Practical analogy:</h2>
+<p>Think of a tuple as a sealed envelope (you can see what's inside but cannot change it), a set as a bag of unique marbles (no duplicates, fast to search), and a list as a shelf of books (ordered, you can rearrange and add more).</p>
+<h2>Common mistake:</h2>
+<p>Creating an empty set with <code>{}</code> actually creates an empty dictionary. To create an empty set, use <code>set()</code>. And remember that tuples with a single element need a trailing comma: <code>(1,)</code>, not just <code>(1)</code> which is just a number in parentheses.</p>
+
+<pre><span class="cm"># Tuple (immutable)</span>
+point = (<span class="num">3</span>, <span class="num">4</span>)
+<span class="kw">print</span>(<span class="str">"x:"</span>, point[<span class="num">0</span>], <span class="str">"y:"</span>, point[<span class="num">1</span>])
+
+<span class="cm"># Set (unique, unordered)</span>
+fruits = {<span class="str">"apple"</span>, <span class="str">"banana"</span>, <span class="str">"cherry"</span>, <span class="str">"apple"</span>}
+<span class="kw">print</span>(<span class="str">"Set:"</span>, fruits)
+
+<span class="cm"># Set operations</span>
+a = {<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>}
+b = {<span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>, <span class="num">6</span>}
+<span class="kw">print</span>(<span class="str">"Union:"</span>, a <span class="op">|</span> b)
+<span class="kw">print</span>(<span class="str">"Intersection:"</span>, a <span class="op">&amp;</span> b)
+<span class="kw">print</span>(<span class="str">"Difference:"</span>, a <span class="op">-</span> b)</pre>
+
+<div class="tip"><strong>Try it:</strong> Add <code>"apple" in fruits</code> to check membership, and print the result. Then try the symmetric difference operator <code>^</code> between sets <code>a</code> and <code>b</code>. Finally, try using a tuple as a dictionary key: <code>coords = {(0, 0): "origin", (1, 0): "right"}</code> and access <code>coords[(0, 0)]</code>.</div>
+
+<div class="cta">
+<a href="/learn.html#lesson-0">Open Interactive Lesson &rarr;</a>
+<p>Run this code directly in your browser with our free Python IDE.</p>
+</div>
+
+<div class="nav-links">
+<a href="/lesson-09-type-conversion.html">&larr; Lesson 09: Type Conversion</a>
+<a href="/lesson-11-input-output.html" class="next">Lesson 11: Input &amp; Output &rarr;</a>
+</div>
+<div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
+&copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>
+</div>
+</div>
+</body>
+</html>

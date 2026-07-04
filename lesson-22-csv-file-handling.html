@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="description" content="Python CSV File Handling - learn to read and write CSV files using the csv module. Master DictReader, DictWriter, and data processing with Python.">
+<meta name="keywords" content="python csv, csv file handling, csv reader, csv writer, DictReader, python file processing">
+<link rel="canonical" href="https://majedql29-spec.github.io/JometCode/lesson-22-csv-file-handling.html">
+<link rel="stylesheet" href="/design.css">
+  <meta property="og:title" content="Python CSV File Handling — Read & Write CSV Files | JometCode">
+<meta property="og:description" content="Learn to read and write CSV files with Python's csv module. Covers DictReader, DictWriter, custom delimiters, and large file processing.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://majedql29-spec.github.io/JometCode/lesson-22-csv-file-handling.html">
+<meta property="og:site_name" content="JometCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python CSV File Handling — Read & Write CSV Files | JometCode">
+<meta name="twitter:description" content="Learn to read and write CSV files with Python's csv module.">
+<title>Python CSV File Handling — Free Interactive Tutorial | JometCode</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://majedql29-spec.github.io/JometCode"},{"@type":"ListItem","position":2,"name":"Learn Python","item":"https://majedql29-spec.github.io/JometCode/learn.html"},{"@type":"ListItem","position":3,"name":"CSV File Handling","item":"https://majedql29-spec.github.io/JometCode/lesson-22-csv-file-handling.html"}]}</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0b0b10; color: #e8e8ee; line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 32px 20px; }
+h1 { font-size: 26px; margin-bottom: 4px; color: #f97316; font-family: ui-monospace, 'SF Mono', monospace; }
+.meta { color: #5a5a6a; font-size: 13px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #22222e; display: flex; gap: 16px; }
+.meta span { display: flex; align-items: center; gap: 4px; }
+.meta .badge { display: inline-block; background: rgba(249,115,22,0.12); color: #f97316; font-size: 11px; padding: 1px 10px; border-radius: 10px; font-weight: 600; }
+h2 { font-size: 18px; color: #e8e8ee; margin: 24px 0 10px; }
+p { margin: 10px 0; color: #d1d5e0; font-size: 14px; }
+code { background: #16161e; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #f97316; }
+pre { background: #16161e; border: 1px solid #22222e; border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 12px 0; font-family: ui-monospace, 'SF Mono', monospace; font-size: 13px; color: #d1d5e0; line-height: 1.5; }
+pre .kw { color: #c586c0; } pre .fn { color: #dcdcaa; } pre .str { color: #ce9178; } pre .cm { color: #6a9955; font-style: italic; } pre .num { color: #b5cea8; } pre .op { color: #d4d4d4; } pre .va { color: #9cdcfe; }
+ul { margin: 8px 0 8px 20px; color: #d1d5e0; font-size: 14px; }
+li { margin: 4px 0; }
+.tip { background: rgba(249,115,22,0.06); border-left: 3px solid #f97316; padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 13px; color: #d1d5e0; }
+.nav-links { display: flex; justify-content: space-between; margin-top: 32px; padding-top: 16px; border-top: 1px solid #22222e; }
+.nav-links a { color: #f97316; text-decoration: none; font-size: 14px; }
+.nav-links a:hover { text-decoration: underline; }
+.nav-links .next { text-align: right; }
+.cta { text-align: center; margin: 32px 0; padding: 20px; background: #121216; border: 1px solid #22222e; border-radius: 10px; }
+.cta a { display: inline-block; background: #f97316; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+.cta a:hover { background: #ea580c; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: #5a5a6a; font-size: 13px; text-decoration: none; margin-bottom: 20px; }
+.back-link:hover { color: #f97316; }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="e580f92e-6fd0-405b-bce3-f8d667558732"></script>
+</head>
+<body>
+<div class="container">
+<a href="/learn.html" class="back-link">&larr; Back to Course</a>
+<h1>Lesson 22: CSV File Handling</h1>
+<div class="meta"><span class="badge">Intermediate</span><span>&#9200; 8 min</span></div>
+
+<p><strong>CSV (Comma-Separated Values)</strong> is a universal file format for tabular data — exported by Excel, Google Sheets, databases, and countless other tools. Python's built-in <code>csv</code> module provides robust support for reading and writing CSV files, handling edge cases like embedded commas, quoted fields, and different line-ending conventions.</p>
+
+<h2>Two approaches: reader/writer vs DictReader/DictWriter</h2>
+
+<ul>
+<li><strong><code>csv.reader</code> / <code>csv.writer</code></strong> — work with rows as lists. Simple and fast, but you must remember column positions: <code>row[0]</code>, <code>row[1]</code>, etc. This is fragile — if columns are reordered, your code breaks silently.</li>
+<li><strong><code>csv.DictReader</code> / <code>csv.DictWriter</code></strong> — work with rows as dictionaries keyed by header names. Much more readable and robust: <code>row["Name"]</code>, <code>row["Age"]</code>. If columns are reordered, your code still works. <code>DictWriter</code> also automatically writes the header row via <code>.writeheader()</code>. DictReader automatically uses the first row as headers. This is the recommended approach for most production code.</li>
+</ul>
+
+<pre><span class="kw">import</span> csv
+
+<span class="cm"># Writing a CSV</span>
+<span class="kw">with</span> <span class="kw">open</span>(<span class="str">"data.csv"</span>, <span class="str">"w"</span>, newline=<span class="str">""</span>) <span class="kw">as</span> <span class="va">f</span>:
+    <span class="va">writer</span> = csv.<span class="fn">writer</span>(f)
+    <span class="va">writer</span>.<span class="fn">writerow</span>([<span class="str">"Name"</span>, <span class="str">"Age"</span>, <span class="str">"City"</span>])
+    <span class="va">writer</span>.<span class="fn">writerow</span>([<span class="str">"Alice"</span>, <span class="num">30</span>, <span class="str">"New York"</span>])
+    <span class="va">writer</span>.<span class="fn">writerow</span>([<span class="str">"Bob"</span>, <span class="num">25</span>, <span class="str">"London"</span>])
+
+<span class="cm"># Reading a CSV</span>
+<span class="kw">with</span> <span class="kw">open</span>(<span class="str">"data.csv"</span>, <span class="str">"r"</span>) <span class="kw">as</span> <span class="va">f</span>:
+    <span class="va">reader</span> = csv.<span class="fn">reader</span>(f)
+    <span class="kw">for</span> <span class="va">row</span> <span class="kw">in</span> <span class="va">reader</span>:
+        <span class="kw">print</span>(row)
+
+<span class="cm"># Using DictReader/DictWriter (recommended)</span>
+<span class="kw">with</span> <span class="kw">open</span>(<span class="str">"data.csv"</span>, <span class="str">"r"</span>) <span class="kw">as</span> <span class="va">f</span>:
+    <span class="va">reader</span> = csv.<span class="fn">DictReader</span>(f)
+    <span class="kw">for</span> <span class="va">row</span> <span class="kw">in</span> <span class="va">reader</span>:
+        <span class="kw">print</span>(row[<span class="str">"Name"</span>], row[<span class="str">"Age"</span>])
+
+<span class="cm"># Writing with DictWriter</span>
+<span class="kw">with</span> <span class="kw">open</span>(<span class="str">"output.csv"</span>, <span class="str">"w"</span>, newline=<span class="str">""</span>) <span class="kw">as</span> <span class="va">f</span>:
+    <span class="va">fieldnames</span> = [<span class="str">"Name"</span>, <span class="str">"Age"</span>, <span class="str">"City"</span>]
+    <span class="va">writer</span> = csv.<span class="fn">DictWriter</span>(f, fieldnames=fieldnames)
+    <span class="va">writer</span>.<span class="fn">writeheader</span>()
+    <span class="va">writer</span>.<span class="fn">writerow</span>({<span class="str">"Name"</span>: <span class="str">"Charlie"</span>, <span class="str">"Age"</span>: <span class="num">35</span>, <span class="str">"City"</span>: <span class="str">"Paris"</span>})</pre>
+
+<h2>Handling headers</h2>
+<p>DictReader reads the first row as fieldnames automatically. If your CSV has no header, pass <code>fieldnames=["col1", "col2"]</code> to the constructor. DictWriter requires you to specify <code>fieldnames</code> — this determines both the column order in the output and which keys are written. Call <code>.writeheader()</code> to write the header row.</p>
+
+<h2>Custom delimiters</h2>
+<p>Not all CSVs use commas! Tab-separated files (TSV) use <code>delimiter="\t"</code>. European formats sometimes use semicolons: <code>delimiter=";"</code>. Always inspect the file first and specify the delimiter explicitly: <code>csv.reader(f, delimiter=";")</code>.</p>
+
+<h2>Quoting control</h2>
+<p>The <code>quoting</code> parameter controls when fields are quoted:</p>
+<ul>
+<li><code>csv.QUOTE_MINIMAL</code> (default) — quote only when necessary (fields containing delimiter, quotechar, or newlines)</li>
+<li><code>csv.QUOTE_ALL</code> — quote every field. Compatible with more parsers but produces larger files.</li>
+<li><code>csv.QUOTE_NONNUMERIC</code> — quote all non-numeric fields. Reader converts unquoted fields to floats.</li>
+<li><code>csv.QUOTE_NONE</code> — never quote. May produce invalid CSV if fields contain special characters.</li>
+</ul>
+
+<h2>Large file processing</h2>
+<p>For files with hundreds of thousands of rows, never read the entire file into memory. Process row by row using a for loop:</p>
+<pre><span class="kw">with</span> <span class="kw">open</span>(<span class="str">"large.csv"</span>, <span class="str">"r"</span>, encoding=<span class="str">"utf-8"</span>) <span class="kw">as</span> <span class="va">f</span>:
+    <span class="va">reader</span> = csv.<span class="fn">DictReader</span>(f)
+    <span class="kw">for</span> <span class="va">row</span> <span class="kw">in</span> <span class="va">reader</span>:
+        <span class="fn">process_row</span>(row)  <span class="cm"># One row at a time</span></pre>
+<p>This uses constant memory regardless of file size. For very large CSV processing, consider <code>pandas.read_csv(chunksize=10000)</code>.</p>
+
+<h2>Common mistakes</h2>
+<p>Forgetting <code>newline=""</code> when opening files for writing — on Windows, this adds extra blank lines between rows. Not specifying <code>encoding="utf-8"</code> — causes UnicodeDecodeError with international characters. Assuming every row has the same number of columns — always validate or handle <code>ValueError</code>. Not accounting for header rows — DictReader skips them automatically, reader does not.</p>
+
+<h2>Best practices</h2>
+<p>Always use <code>newline=""</code> in file open when working with CSV. Always specify <code>encoding="utf-8"</code>. Prefer <code>DictReader</code>/<code>DictWriter</code> over reader/writer for clarity. Handle potential <code>ValueError</code> for malformed rows. For cross-platform CSV, use <code>lineterminator="\r\n"</code> in writer. Check for empty cells: <code>if row.get("column"):</code> handles missing or empty values gracefully.</p>
+
+<h2>Real-world use case</h2>
+<p>Processing a sales report: <code>with open("sales.csv", "r", encoding="utf-8") as f: reader = csv.DictReader(f); total = sum(float(row["Amount"]) for row in reader if row["Status"] == "Completed")</code>. Or generating a report: export user data from a database to CSV for download, using DictWriter to write headers and rows with proper quoting and UTF-8 encoding.</p>
+
+<div class="tip"><strong>Try it:</strong> Add a row to the CSV using DictWriter instead of writer. Then read it back with DictReader and access columns by name. Try changing the delimiter to <code>";"</code> and see how the output changes. Finally, add <code>quoting=csv.QUOTE_ALL</code> and observe the difference in the output file.</div>
+
+<div class="cta">
+<a href="/learn.html#lesson-0">Open Interactive Lesson &rarr;</a>
+<p>Run this code directly in your browser with our free Python IDE.</p>
+</div>
+
+<div class="nav-links">
+<a href="/learn.html">&larr; Back to Course</a>
+<a href="/lesson-23-classes-oop.html" class="next">Lesson 23: Classes &amp; OOP &rarr;</a>
+</div>
+<div style="text-align:center;font-size:12px;color:#5a5a6a;margin-top:32px;">
+&copy; 2026 JometCode | <a href="/cheatsheet.html" style="color:#5a5a6a;">Python Cheatsheet</a>
+</div>
+</div>
+</body>
+</html>
